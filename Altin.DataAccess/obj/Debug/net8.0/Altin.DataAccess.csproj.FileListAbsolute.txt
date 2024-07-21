@@ -1,0 +1,14 @@
+D:\DOTNET_Projects\Altin\Altin.DataAccess\bin\Debug\net8.0\Altin.DataAccess.deps.json
+D:\DOTNET_Projects\Altin\Altin.DataAccess\bin\Debug\net8.0\Altin.DataAccess.runtimeconfig.json
+D:\DOTNET_Projects\Altin\Altin.DataAccess\bin\Debug\net8.0\Altin.DataAccess.dll
+D:\DOTNET_Projects\Altin\Altin.DataAccess\bin\Debug\net8.0\Altin.DataAccess.pdb
+D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\Altin.DataAccess.csproj.AssemblyReference.cache
+D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\Altin.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\Altin.DataAccess.AssemblyInfoInputs.cache
+D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\Altin.DataAccess.AssemblyInfo.cs
+D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\Altin.DataAccess.csproj.CoreCompileInputs.cache
+D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\Altin.DataAccess.dll
+D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\refint\Altin.DataAccess.dll
+D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\Altin.DataAccess.pdb
+D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\Altin.DataAccess.genruntimeconfig.cache
+D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\ref\Altin.DataAccess.dll
