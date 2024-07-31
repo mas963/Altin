@@ -13,6 +13,11 @@
     <ItemGroup>
       <Folder Include="Areas\Admin\Data\" />
       <Folder Include="Areas\Admin\Models\" />
+      <Folder Include="wwwroot\admin\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\js\site.js" />
     </ItemGroup>
 
 </Project>
