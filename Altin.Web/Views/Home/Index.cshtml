@@ -3,205 +3,571 @@
     ViewData["Title"] = "Ana Sayfa";
 }
 
-<div class="container-fluid py-5 spacing">
-    <div class="container">
-        <div class="bg-light p-5 rounded">
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="counter bg-white rounded p-3">
+<div class="container-fluid pt-5 spacing">
+<div class="container">
+<div class="p-3" style="background-color: #dbbf49 !important;">
+<div class="row g-4 justify-content-center">
+<div class="col-md-6 col-lg-6 col-xl-3">
+    <div class="counter bg-white rounded p-1">
+        <h4 style="color: #dbbf49;">Gram Altın</h4>
+        <div class="row">
+            <div class="col-4">
+                <b>Alış</b>
+                <p id="gramalis">1</p>
+            </div>
+            <div class="col-4">
+                <b>Satış</b>
+                <p id="gramsatis"></p>
+            </div>
+            <div class="col-4">
+                <b>Değişim</b>
+                <p id="gramyuzde"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-xl-3">
+    <div class="counter bg-white rounded p-1">
+        <h4 style="color: #dbbf49;">Çeyrek Altın</h4>
+        <div class="row">
+            <div class="col-4">
+                <b>Alış</b>
+                <p id="ceyrekalis"></p>
+            </div>
+            <div class="col-4">
+                <b>Satış</b>
+                <p id="ceyreksatis"></p>
+            </div>
+            <div class="col-4">
+                <b>Değişim</b>
+                <div>
+                    <p id="ceyrekyuzde"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-xl-3">
+    <div class="counter bg-white rounded p-1">
 
-                        <h4 style="color: #dbbf49;">Gram Altın</h4>
-                        <div class="row">
-                            <div class="col-4">
-                                <h5>Alış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif; font-size: 1em;" id="gramalis">1</h1>
-                            </div>
-                            <div class="col-4">
-                                <h5>Satış</h5>
-                                <h1 style="font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="gramsatis"></h1>
-                            </div>
-                            <div class="col-4">
-                                <h5>Değişim</h5>
-                                <div class="clearfix">
-                                    <i id="gramyuzdeicon" style="font-size: 25px;"></i>
-                                    <h1 style="font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="gramyuzde"></h1>
+        <h4 style="color: #dbbf49;">Yarım Altın</h4>
+        <div class="row">
+            <div class="col-4">
+                <b>Alış</b>
+                <p id="yarimalis"></p>
+            </div>
+            <div class="col-4">
+                <b>Satış</b>
+                <p id="yarimsatis"></p>
+            </div>
+            <div class="col-4">
+                <b>Değişim</b>
+                <div>
+                    <p id="ceyrekyuzde"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-xl-3">
+    <div class="counter bg-white rounded p-1">
+
+        <h4 style="color: #dbbf49;">22 Ayar</h4>
+        <div class="row">
+            <div class="col-4">
+                <b>Alış</b>
+                <p id="yirmiikialis">789</p>
+            </div>
+            <div class="col-4">
+                <b>Satış</b>
+                <p id="yirmiikisatis">789</p>
+            </div>
+            <div class="col-4">
+                <b>Değişim</b>
+                <div>
+                    <p id="ceyrekyuzde"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-xl-3">
+    <div class="counter bg-white rounded p-1">
+
+        <h4 style="color: #dbbf49;">Tam Altın</h4>
+        <div class="row">
+            <div class="col-6">
+                <h5>Alış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="tamalis">789</h1>
+            </div>
+            <div class="col-6">
+                <h5>Satış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="tamsatis">789</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-xl-3">
+    <div class="counter bg-white rounded p-1">
+
+        <h4 style="color: #dbbf49;">Gremse Altın</h4>
+        <div class="row">
+            <div class="col-6">
+                <h5>Alış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="gremsealis">789</h1>
+            </div>
+            <div class="col-6">
+                <h5>Satış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="gremsesatis">789</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-xl-3">
+    <div class="counter bg-white rounded p-1">
+
+        <h4 style="color: #dbbf49;">Ata Lira</h4>
+        <div class="row">
+            <div class="col-6">
+                <h5>Alış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="ataalis">789</h1>
+            </div>
+            <div class="col-6">
+                <h5>Satış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="atasatis">789</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-xl-3">
+    <div class="counter bg-white rounded p-1">
+
+        <h4 style="color: #dbbf49;">Külçe Altın</h4>
+        <div class="row">
+            <div class="col-6">
+                <h5>Alış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="kulcealis">789</h1>
+            </div>
+            <div class="col-6">
+                <h5>Satış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="kulcesatis">789</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-xl-3">
+    <div class="counter bg-white rounded p-1">
+
+        <h4 style="color: #dbbf49;">Dolar</h4>
+        <div class="row">
+            <div class="col-6">
+                <h5>Alış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="dolaralis">789</h1>
+            </div>
+            <div class="col-6">
+                <h5>Satış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="dolarsatis">789</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-xl-3">
+    <div class="counter bg-white rounded p-1">
+
+        <h4 style="color: #dbbf49;">Euro</h4>
+        <div class="row">
+            <div class="col-6">
+                <h5>Alış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="euroalis">789</h1>
+            </div>
+            <div class="col-6">
+                <h5>Satış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="eurosatis">789</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-xl-3">
+    <div class="counter bg-white rounded p-1">
+
+        <h4 style="color: #dbbf49;">EUR/USD</h4>
+        <div class="row">
+            <div class="col-6">
+                <h5>Alış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="eurusdalis">789</h1>
+            </div>
+            <div class="col-6">
+                <h5>Satış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="eurusdsatis">789</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-xl-3">
+    <div class="counter bg-white rounded p-1">
+
+        <h4 style="color: #dbbf49;">XAU/USD</h4>
+        <div class="row">
+            <div class="col-6">
+                <h5>Alış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="xauusdalis">1963</h1>
+            </div>
+            <div class="col-6">
+                <h5>Satış</h5>
+                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="xauusdsatis">1965</h1>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="container-fluid banner" style="background-color: rgba(197,65,48,0.07) !important;">
+    <div class="container py-2">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-6">
+                <div class="py-4">
+                    <h1 class="display-3 text-dark">Ürünlerimize Göz</h1>
+                    <p class="fw-normal display-3 text-dark mb-4">Attınız Mı?</p>
+                    <p class="mb-4 text-dark">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.</p>
+                    <a href="#" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">Tüm Ürünlere Göz At</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="position-relative">
+                    <img src="~/img/model1.jpg" class="img-fluid w-100 rounded" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid fruite">
+    <div class="container py-5">
+        <div class="tab-class text-center">
+            <div class="row g-4">
+                <div class="col-lg-4 text-start">
+                    <h1>En Popüler Ürünler</h1>
+                </div>
+                <div class="col-lg-8 text-end">
+                    <ul class="nav nav-pills d-inline-flex text-center mb-5">
+                        <li class="nav-item">
+                            <a class="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-1">
+                                <span class="text-dark" style="width: 130px;">Seçtiklerimiz</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
+                                <span class="text-dark" style="width: 130px;">Kolyeler</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-3">
+                                <span class="text-dark" style="width: 130px;">Bilezikler</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-4">
+                                <span class="text-dark" style="width: 130px;">Yüzükler</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane fade p-0 active show">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Grapes</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Grapes</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Raspberries</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Apricots</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Banana</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Oranges</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Raspberries</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Grapes</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="counter bg-white rounded p-3">
-
-                        <h4 style="color: #dbbf49;">Çeyrek Altın</h4>
-                        <div class="row">
-                            <div class="col-6">
-                                <h5>Alış</h5>
-                                <h1 style="font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="ceyrekalis"></h1>
-                            </div>
-                            <div class="col-6">
-                                <h5>Satış</h5>
-                                <h1 style="font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="ceyreksatis"></h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="counter bg-white rounded p-3">
-
-                        <h4 style="color: #dbbf49;">Yarım Altın</h4>
-                        <div class="row">
-                            <div class="col-6">
-                                <h5>Alış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="yarimalis"></h1>
-                            </div>
-                            <div class="col-6">
-                                <h5>Satış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="yarimsatis"></h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="counter bg-white rounded p-3">
-
-                        <h4 style="color: #dbbf49;">22 Ayar</h4>
-                        <div class="row">
-                            <div class="col-6">
-                                <h5>Alış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="yirmiikialis">789</h1>
-                            </div>
-                            <div class="col-6">
-                                <h5>Satış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="yirmiikisatis">789</h1>
+                <div id="tab-2" class="tab-pane fade p-0">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Grapes</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Raspberries</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="counter bg-white rounded p-3">
-
-                        <h4 style="color: #dbbf49;">Tam Altın</h4>
-                        <div class="row">
-                            <div class="col-6">
-                                <h5>Alış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="tamalis">789</h1>
-                            </div>
-                            <div class="col-6">
-                                <h5>Satış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="tamsatis">789</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="counter bg-white rounded p-3">
-
-                        <h4 style="color: #dbbf49;">Gremse Altın</h4>
-                        <div class="row">
-                            <div class="col-6">
-                                <h5>Alış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="gremsealis">789</h1>
-                            </div>
-                            <div class="col-6">
-                                <h5>Satış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="gremsesatis">789</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="counter bg-white rounded p-3">
-
-                        <h4 style="color: #dbbf49;">Ata Lira</h4>
-                        <div class="row">
-                            <div class="col-6">
-                                <h5>Alış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="ataalis">789</h1>
-                            </div>
-                            <div class="col-6">
-                                <h5>Satış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="atasatis">789</h1>
+                <div id="tab-3" class="tab-pane fade p-0">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Oranges</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Apple</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="counter bg-white rounded p-3">
-
-                        <h4 style="color: #dbbf49;">Külçe Altın</h4>
-                        <div class="row">
-                            <div class="col-6">
-                                <h5>Alış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="kulcealis">789</h1>
-                            </div>
-                            <div class="col-6">
-                                <h5>Satış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="kulcesatis">789</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="counter bg-white rounded p-3">
-
-                        <h4 style="color: #dbbf49;">Dolar</h4>
-                        <div class="row">
-                            <div class="col-6">
-                                <h5>Alış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="dolaralis">789</h1>
-                            </div>
-                            <div class="col-6">
-                                <h5>Satış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="dolarsatis">789</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="counter bg-white rounded p-3">
-
-                        <h4 style="color: #dbbf49;">Euro</h4>
-                        <div class="row">
-                            <div class="col-6">
-                                <h5>Alış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="euroalis">789</h1>
-                            </div>
-                            <div class="col-6">
-                                <h5>Satış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="eurosatis">789</h1>
+                <div id="tab-4" class="tab-pane fade p-0">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Grapes</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Apricots</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="counter bg-white rounded p-3">
-
-                        <h4 style="color: #dbbf49;">EUR/USD</h4>
-                        <div class="row">
-                            <div class="col-6">
-                                <h5>Alış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="eurusdalis">789</h1>
-                            </div>
-                            <div class="col-6">
-                                <h5>Satış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="eurusdsatis">789</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="counter bg-white rounded p-3">
-
-                        <h4 style="color: #dbbf49;">XAU/USD</h4>
-                        <div class="row">
-                            <div class="col-6">
-                                <h5>Alış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="xauusdalis">1963</h1>
-                            </div>
-                            <div class="col-6">
-                                <h5>Satış</h5>
-                                <h1 style=" font-family: 'Open Sans', sans-serif;  font-size: 1em;" id="xauusdsatis">1965</h1>
+                <div id="tab-5" class="tab-pane fade show p-0">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Banana</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Raspberries</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Oranges</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -211,43 +577,56 @@
     </div>
 </div>
 
-<!-- Hero Start -->
-<div class="container-fluid py-5 mb-5 hero-header">
+<div class="container-fluid featurs">
     <div class="container py-5">
-        <div class="row g-5 align-items-center">
-            <div class="col-md-12 col-lg-7">
-                <h4 class="mb-3 text-secondary">Diğer</h4>
-                <h1 class="mb-5 display-3 text-primary" style="color: #c54130 !important;">Ürünlerimiz</h1>
-                <div class="position-relative mx-auto">
-
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="featurs-item text-center rounded bg-light p-4">
+                    <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                        <i class="fas fa-car-side fa-3x text-white"></i>
+                    </div>
+                    <div class="featurs-content text-center">
+                        <h5>Free Shipping</h5>
+                        <p class="mb-0">Free on order over $300</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-5">
-                <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active rounded">
-                            <img src="~/img/hero-img-11.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
-                            <a href="shop.html" class="btn px-4 py-2 text-white rounded">Altınlar</a>
-                        </div>
-                        <div class="carousel-item rounded">
-                            <img src="~/img/hero-img-21.jpg" class="img-fluid w-100 h-100 rounded" alt="Second slide">
-                            <a href="shop.html" class="btn px-4 py-2 text-white rounded">Altınlar</a>
-                        </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="featurs-item text-center rounded bg-light p-4">
+                    <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                        <i class="fas fa-user-shield fa-3x text-white"></i>
                     </div>
-                    <button style="background-color: #c54130 !important;" class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button style="background-color: #c54130 !important;" class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                    <div class="featurs-content text-center">
+                        <h5>Security Payment</h5>
+                        <p class="mb-0">100% security payment</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="featurs-item text-center rounded bg-light p-4">
+                    <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                        <i class="fas fa-exchange-alt fa-3x text-white"></i>
+                    </div>
+                    <div class="featurs-content text-center">
+                        <h5>30 Day Return</h5>
+                        <p class="mb-0">30 day money guarantee</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="featurs-item text-center rounded bg-light p-4">
+                    <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                        <i class="fa fa-phone-alt fa-3x text-white"></i>
+                    </div>
+                    <div class="featurs-content text-center">
+                        <h5>24/7 Support</h5>
+                        <p class="mb-0">Support every time fast</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Hero End -->
 
 @section Scripts{
     <script src="~/js/script.js"></script>

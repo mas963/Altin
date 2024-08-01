@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XfVyfYKTxd949aGS5j8/FytIFVWaDQN1eQiRqiKQwVE=",
+  "Hash": "BE0H7AHGDg9NADHqC6xSRJpCIjhDU6j1/E8/CcXA6h8=",
   "Source": "Altin.Web",
   "BasePath": "_content/Altin.Web",
   "Mode": "Default",
@@ -1252,6 +1252,25 @@
       "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
+      "Identity": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\img\\110-1108165_png-jewellers-with-girl-transparent-png.jpg",
+      "SourceId": "Altin.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\",
+      "BasePath": "_content/Altin.Web",
+      "RelativePath": "img/110-1108165_png-jewellers-with-girl-transparent-png.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\110-1108165_png-jewellers-with-girl-transparent-png.jpg"
+    },
+    {
       "Identity": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\img\\hero-img.jpg",
       "SourceId": "Altin.Web",
       "SourceType": "Discovered",
@@ -1290,6 +1309,25 @@
       "OriginalItemSpec": "wwwroot\\img\\kulce.jpg"
     },
     {
+      "Identity": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\img\\model1.jpg",
+      "SourceId": "Altin.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\",
+      "BasePath": "_content/Altin.Web",
+      "RelativePath": "img/model1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\model1.jpg"
+    },
+    {
       "Identity": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\img\\payment.png",
       "SourceId": "Altin.Web",
       "SourceType": "Discovered",
@@ -1307,6 +1345,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\payment.png"
+    },
+    {
+      "Identity": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\img\\Screenshot_65.jpg",
+      "SourceId": "Altin.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\",
+      "BasePath": "_content/Altin.Web",
+      "RelativePath": "img/Screenshot_65.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Screenshot_65.jpg"
     },
     {
       "Identity": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\img\\trendyol.jpg",

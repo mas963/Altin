@@ -4,6 +4,7 @@ let previousData = {
     gramYuzde: null,
     ceyrekAlis: null,
     ceyrekSatis: null,
+    ceyrekYuzde: null,
     yarimAlis: null,
     yarimSatis: null,
     yirmiikialis: null,
@@ -28,13 +29,15 @@ let previousData = {
 
 function updateElement(id, newValue, previousValue) {
     const element = document.getElementById(id);
-    element.innerText = newValue;
+    const roundedValue = parseFloat(newValue).toFixed(2);
+    element.innerText = roundedValue;
 
     if (previousValue !== null) {
-        if (newValue > previousValue) {
+        const roundedPreviousValue = parseFloat(previousValue).toFixed(2);
+        if (roundedValue  > roundedPreviousValue) {
             element.style.backgroundColor = 'green';
             element.style.color = 'white';
-        } else if (newValue < previousValue) {
+        } else if (roundedValue  < roundedPreviousValue) {
             element.style.backgroundColor = 'red';
             element.style.color = 'white';
         } else {
@@ -44,26 +47,16 @@ function updateElement(id, newValue, previousValue) {
     }
 }
 
-function percentageChange(id, currentValue) {
+function percentageCalculator(id, currentValue) {
     const element = document.getElementById(id);
     element.innerText = "%" + currentValue;
-    
-    iconElement = document.getElementById(id + "icon");
 
     if (currentValue > 0) {
-        element.style.backgroundColor = 'green';
-        element.style.color = 'white';
-        
-        iconElement.className = "float-start fas fa-sort-up ";
-        
+        element.style.color = 'green';
     } else if (currentValue < 0) {
-        element.style.backgroundColor = 'red';
-        element.style.color = 'white';
-
-        element.className = "float-start fas fa-sort-down";
+        element.style.color = 'red';
     } else {
         element.style.color = 'black';
-        element.style.backgroundColor = 'transparent';
     }
 }
 
@@ -77,6 +70,7 @@ async function fetchData() {
         gramYuzde: data[0][0].yuzde,
         ceyrekAlis: data[0][3].alis,
         ceyrekSatis: data[0][3].satis,
+        ceyrekYuzde: data[0][3].yuzde,
         yarimAlis: data[0][4].alis,
         yarimSatis: data[0][4].satis,
         yirmiikialis: data[0][1].alis,
@@ -101,9 +95,10 @@ async function fetchData() {
 
     updateElement('gramalis', newData.gramAlis, previousData.gramAlis);
     updateElement('gramsatis', newData.gramSatis, previousData.gramSatis);
-    percentageChange('gramyuzde',  newData.gramYuzde);
+    percentageCalculator('gramyuzde', newData.gramYuzde);
     updateElement('ceyrekalis', newData.ceyrekAlis, previousData.ceyrekAlis);
     updateElement('ceyreksatis', newData.ceyrekSatis, previousData.ceyrekSatis);
+    percentageCalculator('ceyrekyuzde', newData.ceyrekYuzde);
     updateElement('yarimalis', newData.yarimAlis, previousData.yarimAlis);
     updateElement('yarimsatis', newData.yarimSatis, previousData.yarimSatis);
     updateElement('yirmiikialis', newData.yirmiikialis, previousData.yirmiikialis);

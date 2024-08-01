@@ -11,7 +11,9 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
@@ -31,6 +33,7 @@
         .spacing {
             margin-top: 100px; /* Bu değeri ihtiyacınıza göre artırabilir veya azaltabilirsiniz */
         }
+
         .btn-md-square {
             width: 50px; /* Butonun genişliği */
             height: 50px; /* Butonun yüksekliği */
@@ -46,14 +49,12 @@
             height: 100%; /* Resmin yüksekliğini butonun yüksekliği ile aynı yapar */
             object-fit: cover; /* Resmin buton içine sığmasını sağlar ve kesilmeyi önler */
         }
+
         #uresinler {
             width: 60px; /* Resmin genişliği */
             height: 60px; /* Resmin yüksekliği */
             border-radius: 50%; /* Yuvarlak kenar */
             margin-right: 5px; /* Sağ kenar boşluğu */
-        }
-        body {
-            color: #5500ff !important; /* Tüm yazı renkleri */
         }
     </style>
 
@@ -61,7 +62,8 @@
 
 <body>
 <!-- Spinner Start -->
-<div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+<div id="spinner"
+     class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
     <div class="spinner-grow text-primary" role="status"></div>
 </div>
 <!-- Spinner End -->
@@ -97,18 +99,31 @@
             <a href="index.html" class="navbar-brand">
                 <h1 class="text-primary display-6" style="color: #c54130 !important;">Üresinler Kuyumculuk</h1>
             </a>
-            <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars text-primary"></span>
             </button>
             <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
 
-                    <a href="index.html" class="nav-item nav-link active" style="color: black; text-decoration: none; position: relative;" onmouseover="this.style.backgroundColor='#dbbf49'; this.style.color='white';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Anasayfa</a>
-                    <a href="shop.html" class="nav-item nav-link" style="color: black; text-decoration: none; position: relative;" onmouseover="this.style.backgroundColor='#dbbf49'; this.style.color='white';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Ürünler</a>
+                    <a href="index.html" class="nav-item nav-link active"
+                       style="color: black; text-decoration: none; position: relative;"
+                       onmouseover="this.style.backgroundColor='#dbbf49'; this.style.color='white';"
+                       onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Anasayfa</a>
+                    <a href="shop.html" class="nav-item nav-link"
+                       style="color: black; text-decoration: none; position: relative;"
+                       onmouseover="this.style.backgroundColor='#dbbf49'; this.style.color='white';"
+                       onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Ürünler</a>
 
-                    <a href="shop-detail.html" class="nav-item nav-link" style="color: black; text-decoration: none; position: relative;" onmouseover="this.style.backgroundColor='#dbbf49'; this.style.color='white';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Hakkımızda</a>
-                    
-                    <a href="contact.html" class="nav-item nav-link active" style="color: black; text-decoration: none; position: relative;" onmouseover="this.style.backgroundColor='#dbbf49'; this.style.color='white';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">İletişim</a>
+                    <a href="shop-detail.html" class="nav-item nav-link"
+                       style="color: black; text-decoration: none; position: relative;"
+                       onmouseover="this.style.backgroundColor='#dbbf49'; this.style.color='white';"
+                       onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">Hakkımızda</a>
+
+                    <a href="contact.html" class="nav-item nav-link active"
+                       style="color: black; text-decoration: none; position: relative;"
+                       onmouseover="this.style.backgroundColor='#dbbf49'; this.style.color='white';"
+                       onmouseout="this.style.backgroundColor='transparent'; this.style.color='black';">İletişim</a>
                 </div>
                 <div class="d-flex m-3 me-0">
                     <img src="~/img/UresinlerKirmizisi.jpg" alt="Privacy Policy Icon" id="uresinler">
@@ -129,7 +144,8 @@
             </div>
             <div class="modal-body d-flex align-items-center">
                 <div class="input-group w-75 mx-auto d-flex">
-                    <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                    <input type="search" class="form-control p-3" placeholder="keywords"
+                           aria-describedby="search-icon-1">
                     <span id="search-icon-1" class="input-group-text p-3">
                         <i class="fa fa-search"></i>
                     </span>
@@ -156,10 +172,12 @@
 
                 <div class="col-lg-3">
                     <div class="d-flex justify-content-end pt-3">
-                        <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href="https://www.instagram.com/uresinlerkuyumculuk/">
+                        <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle"
+                           href="https://www.instagram.com/uresinlerkuyumculuk/">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href="https://www.trendyol.com/magaza/uresinlerkuyumculuk-m-297229?sst=0">
+                        <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle"
+                           href="https://www.trendyol.com/magaza/uresinlerkuyumculuk-m-297229?sst=0">
                             <img src="~/img/trendyol.jpg" alt="resim açıklaması" class="rounded-circle-img">
                         </a>
                         <!-- <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a> -->
@@ -177,7 +195,8 @@
                         Tevfikiye Cd.No:53,42030
                         Meram/Konya
                     </p>
-                    <p>E-mail: <a href="mailto:uresinlerkuyumculuk@gmail.com" style="color: #c54130 !important;">uresinlerkuyumculuk@gmail.com</a></p>
+                    <p>E-mail: <a href="mailto:uresinlerkuyumculuk@gmail.com" style="color: #c54130 !important;">uresinlerkuyumculuk@gmail.com</a>
+                    </p>
                     <p>Telefon: 05056648733</p>
                     <p>Ödeme</p>
                     <img src="~/img/payment.png" class="img-fluid" alt="">
@@ -193,7 +212,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 text-center text-md-start mb-3 mb-md-0">
-                <span class="text-light"><a href="#" style="color: #c54130 !important;"><i class="fas fa-copyright text-light me-2"></i>Üresinler Kuyumculuk</a>, İzinsiz veri alınması veya herhangi bir şekilde kopyalanması yasaktır.</span>
+                <span class="text-light"><a href="#" style="color: #c54130 !important;"><i
+                            class="fas fa-copyright text-light me-2"></i>Üresinler Kuyumculuk</a>, İzinsiz veri alınması veya herhangi bir şekilde kopyalanması yasaktır.</span>
             </div>
         </div>
     </div>
@@ -201,7 +221,8 @@
 <!-- Copyright End -->
 
 <!-- Back to Top -->
-<a href="#" class="btn btn-primary border-3 rounded-circle back-to-top" style="color: #c54130 !important; background-color: #dbbf49 !important; border-color: #dbbf49 !important;">
+<a href="#" class="btn btn-primary border-3 rounded-circle back-to-top"
+   style="color: #c54130 !important; background-color: #dbbf49 !important; border-color: #dbbf49 !important;">
     <i class="fa fa-arrow-up"></i>
 </a>
 

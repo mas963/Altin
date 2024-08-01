@@ -261,6 +261,14 @@
       "PackagePath": "staticwebassets\\css\\style.css"
     },
     {
+      "Id": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\img\\110-1108165_png-jewellers-with-girl-transparent-png.jpg",
+      "PackagePath": "staticwebassets\\img\\110-1108165_png-jewellers-with-girl-transparent-png.jpg"
+    },
+    {
+      "Id": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\img\\Screenshot_65.jpg",
+      "PackagePath": "staticwebassets\\img\\Screenshot_65.jpg"
+    },
+    {
       "Id": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\img\\UresinlerKirmizisi.jpg",
       "PackagePath": "staticwebassets\\img\\UresinlerKirmizisi.jpg"
     },
@@ -271,6 +279,10 @@
     {
       "Id": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\img\\kulce.jpg",
       "PackagePath": "staticwebassets\\img\\kulce.jpg"
+    },
+    {
+      "Id": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\img\\model1.jpg",
+      "PackagePath": "staticwebassets\\img\\model1.jpg"
     },
     {
       "Id": "D:\\DOTNET_Projects\\Altin\\Altin.Web\\wwwroot\\img\\payment.png",
