@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Altin.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+54be85a3640dad4a58134a9c56ee4eb638aa308c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a0a5391366e8ac6866d7f00da7bc1ba22abc5068")]
 [assembly: System.Reflection.AssemblyProductAttribute("Altin.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Altin.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
