@@ -387,7 +387,8 @@
 
 /*** Banner Section Start ***/
 .banner .banner-btn:hover {
-    background: var(--bs-primary);
+    background: var(--bs-yellow); 
+   
 }
 /*** Banner Section End ***/
 
