@@ -13,11 +13,17 @@
     <ItemGroup>
       <Folder Include="Areas\Admin\Data\" />
       <Folder Include="Areas\Admin\Models\" />
+      <Folder Include="Middlewares\" />
       <Folder Include="wwwroot\admin\" />
     </ItemGroup>
 
     <ItemGroup>
       <_ContentIncludedByDefault Remove="wwwroot\js\site.js" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Altin.Application\Altin.Application.csproj" />
+      <ProjectReference Include="..\Altin.Shared\Altin.Shared.csproj" />
     </ItemGroup>
 
 </Project>

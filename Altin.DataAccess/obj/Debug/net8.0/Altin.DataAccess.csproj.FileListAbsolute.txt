@@ -12,3 +12,9 @@ D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\refint\Altin.DataAcce
 D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\Altin.DataAccess.pdb
 D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\Altin.DataAccess.genruntimeconfig.cache
 D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\ref\Altin.DataAccess.dll
+D:\DOTNET_Projects\Altin\Altin.DataAccess\bin\Debug\net8.0\Altin.Core.dll
+D:\DOTNET_Projects\Altin\Altin.DataAccess\bin\Debug\net8.0\Altin.Shared.dll
+D:\DOTNET_Projects\Altin\Altin.DataAccess\bin\Debug\net8.0\Altin.Shared.pdb
+D:\DOTNET_Projects\Altin\Altin.DataAccess\bin\Debug\net8.0\Altin.Core.pdb
+D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\Altin.DataAccess.sourcelink.json
+D:\DOTNET_Projects\Altin\Altin.DataAccess\obj\Debug\net8.0\Altin.Da.0424F905.Up2Date

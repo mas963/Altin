@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Altin.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b15f6aacfca77dbf8168db5d17b9894d6886349")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d1e85e55a3c11b4d25d4a93ce892abd92bea7b3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Altin.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Altin.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
