@@ -1,0 +1,110 @@
+﻿@{
+    Layout = "_AdminLayout";
+    ViewBag.NavbarTitle = "Ürün Ekle";
+}
+
+<div class="panel-header panel-header-sm">
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Ürün Ekleme Formu</h5>
+                </div>
+                <div class="card-body">
+                    <div id="message"></div>
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="inputProductName">Ürün İsmi</label>
+                            <input type="text" class="form-control" id="inputProductName" placeholder="Ürün ismini giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputProductDescription">Ürün Açıklaması</label>
+                            <input type="text" class="form-control" id="inputProductDescription" placeholder="Ürün açıklamasını giriniz">
+                        </div>
+
+                        <label class="form-label" for="customFile">Ürün Görseli</label>
+                        <input type="file" class="form-control" id="customFile"/>
+
+                        <div class="form-group mt-2">
+                            <label for="inputLocationSelect">Eklenecek Yer</label>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="inputLocationSelect" id="radio1" value="option1">
+                                    Ana sayfa popüler ürünler
+                                    <span class="form-check-sign"></span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="inputLocationSelect" id="radio2" value="option2" checked>
+                                    Ürünler sayfası
+                                    <span class="form-check-sign"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submitButton">Ürünü Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-category">Bilgilendirme</h5>
+                </div>
+                <div class="card-body">
+                    <b>* Anasayfada gözüken popüler ürünlerde en fazla 8 ürün olabilir.</b><br/>
+                    <b>* Eklenecek ürün görsellerinin kare(en-boy oranı aynı) olmasına dikkat ediniz.</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#uploadForm").submit(function (e) {
+                e.preventDefault();
+                
+                var formData = new FormData();
+                formData.append("ProductName", $("#inputProductName").val());
+                formData.append("ProductDescription", $("#inputProductDescription").val());
+                formData.append("ProductImage", $("#customFile")[0].files[0]);
+                formData.append("Location", $("input[name='inputLocationSelect']:checked").val());
+                
+                var $submitButton = $("#submitButton");
+                $submitButton.prop('disabled', true);
+                $submitButton.html('Bekleyin...');
+                
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/Product/UploadAjax",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        $submitButton.prop('disabled', false);
+                        $submitButton.html('Ürünü Ekle');
+                        
+                        if (response.success) {
+                            $("#message").html('<div class="alert alert-success">' + response.message + '</div>');
+                            $("#uploadForm")[0].reset();
+                        } else {
+                            $("#message").html('<div class="alert alert-danger">' + response.message + '</div>');
+                        }
+                    },
+                    error: function () {
+                        $submitButton.prop('disabled', false);
+                        $submitButton.html('Ürünü Ekle');
+                        
+                        $("#message").html('<div class="alert alert-danger">Beklenmeyen bir hata oluştu.</div>');
+                    }
+                });
+            });
+        });
+    </script>
+}
