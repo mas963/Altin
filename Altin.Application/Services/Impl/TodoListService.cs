@@ -43,7 +43,7 @@ public class TodoListService : ITodoListService
 
     public async Task<UpdateTodoListResponseModel> UpdateAsync(Guid id, UpdateTodoListModel updateTodoListModel)
     {
-        var todoList = await _todoListRepository.GetFirstAsync(tl => tl.Id == id);
+        var todoList = await _todoListRepository.GetAsync(tl => tl.Id == id);
 
         var userId = _claimService.GetUserId();
 
@@ -51,17 +51,21 @@ public class TodoListService : ITodoListService
             throw new BadRequestException("The selected list does not belong to you");
 
         todoList.Title = updateTodoListModel.Title;
-        
+
+        await _todoListRepository.UpdateAsync(todoList);
+
         return new UpdateTodoListResponseModel
         {
-            Id = (await _todoListRepository.UpdateAsync(todoList)).Id
+            Id = id
         };
     }
-    
+
     public async Task<Guid> DeleteAsync(Guid id)
     {
-        var todoList = await _todoListRepository.GetFirstAsync(tl => tl.Id == id);
-        
-        return (await _todoListRepository.DeleteAsync(todoList)).Id;
+        var todoList = await _todoListRepository.GetAsync(tl => tl.Id == id);
+
+        await _todoListRepository.DeleteAsync(todoList);
+
+        return id;
     }
 }

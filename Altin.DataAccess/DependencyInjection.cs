@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Altin.DataAccess.Repositories;
+using Altin.DataAccess.Repositories.Impl;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +13,7 @@ public static class DependencyInjection
     {
         services.AddScoped<ITodoItemRepository, TodoItemRepository>();
         services.AddScoped<ITodoListRepository, TodoListRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
 
         var connectionString = configuration.GetConnectionString("DefaultConnection");
 

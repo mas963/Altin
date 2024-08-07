@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Altin.Core;
+using Altin.Core.Entities;
 using Altin.Shared;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -16,8 +17,8 @@ public class DatabaseContext : IdentityDbContext<ApplicationUser>
     }
 
     public DbSet<TodoItem> TodoItems { get; set; }
-
     public DbSet<TodoList> TodoLists { get; set; }
+    public DbSet<Product> Products { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

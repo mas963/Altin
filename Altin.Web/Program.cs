@@ -1,7 +1,13 @@
+using Altin.Application;
+using Altin.DataAccess;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.DataAccessDependencyInjection(builder.Configuration);
+builder.Services.ApplicationDependencyInjection(builder.Configuration);
 
 var app = builder.Build();
 

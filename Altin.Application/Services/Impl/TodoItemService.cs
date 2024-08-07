@@ -30,7 +30,7 @@ public class TodoItemService : ITodoItemService
     public async Task<CreateTodoItemResponseModel> CreateAsync(CreateTodoItemModel createTodoItemModel,
         CancellationToken cancellationToken = default)
     {
-        var todoList = await _todoListRepository.GetFirstAsync(tl => tl.Id == createTodoItemModel.TodoListId);
+        var todoList = await _todoListRepository.GetAsync(tl => tl.Id == createTodoItemModel.TodoListId);
         var todoItem = _mapper.Map<TodoItem>(createTodoItemModel);
 
         todoItem.List = todoList;
@@ -44,20 +44,24 @@ public class TodoItemService : ITodoItemService
     public async Task<UpdateTodoItemResponseModel> UpdateAsync(Guid id, UpdateTodoItemModel updateTodoItemModel,
         CancellationToken cancellationToken = default)
     {
-        var todoItem = await _todoItemRepository.GetFirstAsync(ti => ti.Id == id);
+        var todoItem = await _todoItemRepository.GetAsync(ti => ti.Id == id);
 
         _mapper.Map(updateTodoItemModel, todoItem);
 
+        await _todoItemRepository.UpdateAsync(todoItem);
+        
         return new UpdateTodoItemResponseModel
         {
-            Id = (await _todoItemRepository.UpdateAsync(todoItem)).Id
+            Id = id
         };
     }
 
     public async Task<Guid> DeleteAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        var todoItem = await _todoItemRepository.GetFirstAsync(ti => ti.Id == id);
+        var todoItem = await _todoItemRepository.GetAsync(ti => ti.Id == id);
+
+        await _todoItemRepository.DeleteAsync(todoItem);
         
-        return (await _todoItemRepository.DeleteAsync(todoItem)).Id;
+        return id;
     }
 }

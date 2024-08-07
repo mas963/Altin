@@ -260,3 +260,5 @@ D:\DOTNET_Projects\Altin\Altin.Web\bin\Debug\net8.0\Altin.Shared.pdb
 D:\DOTNET_Projects\Altin\Altin.Web\bin\Debug\net8.0\Altin.Core.pdb
 D:\DOTNET_Projects\Altin\Altin.Web\bin\Debug\net8.0\Altin.DataAccess.pdb
 D:\DOTNET_Projects\Altin\Altin.Web\obj\Debug\net8.0\Altin.Web.MvcApplicationPartsAssemblyInfo.cs
+D:\DOTNET_Projects\Altin\Altin.Web\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\DOTNET_Projects\Altin\Altin.Web\bin\Debug\net8.0\System.Text.Json.dll
