@@ -5,13 +5,16 @@ namespace Altin.DataAccess;
 
 public interface IBaseRepository<TEntity> where TEntity : BaseEntity
 {
-    Task<TEntity> GetFirstAsync(Expression<Func<TEntity, bool>> predicate);
+    Task<TEntity> GetAsync(
+        Expression<Func<TEntity, bool>> filter = null,
+        Func<IQueryable<TEntity>, IQueryable<TEntity>> include = null);
 
-    Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate);
+    Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null,
+        Expression<Func<TEntity, object>> orderBy = null);
 
     Task<TEntity> AddAsync(TEntity entity);
 
-    Task<TEntity> UpdateAsync(TEntity entity);
+    Task<int> UpdateAsync(TEntity entity);
 
-    Task<TEntity> DeleteAsync(TEntity entity);
+    Task<int> DeleteAsync(TEntity entity);
 }
