@@ -32,13 +32,13 @@
         </div>
         <div class="sidebar-wrapper" id="sidebar-wrapper">
             <ul class="nav">
-                <li class="active ">
-                    <a href="./dashboard.html">
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Dashboard" ? "active" : "")">
+                    <a href="/Admin/Dashboard">
                         <i class="now-ui-icons design_app"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Product" ? "active" : "")">
                     <a href="/Admin/Product">
                         <i class="now-ui-icons shopping_shop"></i>
                         <p>Ürünler</p>
