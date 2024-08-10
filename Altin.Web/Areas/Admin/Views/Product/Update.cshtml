@@ -1,0 +1,133 @@
+﻿@model Altin.Application.Models.Product.ProductUpdateModel
+
+@{
+    Layout = "_AdminLayout";
+    ViewBag.NavbarTitle = "Ürün Düzenle";
+}
+
+<div class="panel-header panel-header-sm">
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">"@Model.ProductDescription" Adlı Ürünü Düzenliyorsunuz</h5>
+                </div>
+                <div class="card-body">
+                    <div id="message"></div>
+                    <form id="uploadForm">
+                        <div class="form-group">
+                            <label for="inputProductName">Ürün İsmi</label>
+                            <input type="text" class="form-control" id="inputProductName" value="@Model.ProductName">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputProductDescription">Ürün Açıklaması</label>
+                            <input type="text" class="form-control" id="inputProductDescription" value="@Model.ProductDescription">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="submitButton">Ürünü Düzenle</button>
+                    </form>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <label class="form-label" for="customFile">Mevcut Ürün Görseli</label>
+                        <br/>
+                        <img src="~/img/Products/@Model.ProductImageUrl" width="300" id="productImage"/>
+                    </div>
+
+                    <label class="form-label" for="customFile">Yeni Ürün Görseli</label>
+                    <input type="file" class="form-control" id="customFile"/>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-category">Bilgilendirme</h5>
+                </div>
+                <div class="card-body">
+                    <b>* Anasayfada gözüken popüler ürünlerde en fazla 8 ürün olabilir.</b><br/>
+                    <b>* Eklenecek ürün görsellerinin kare(en-boy oranı aynı) olmasına dikkat ediniz.</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#uploadForm").submit(function (e) {
+                e.preventDefault();
+                
+                var formData = new FormData();
+                formData.append("Id", "@Model.Id");
+                formData.append("ProductName", $("#inputProductName").val());
+                formData.append("ProductDescription", $("#inputProductDescription").val());
+                
+                var $submitButton = $("#submitButton");
+                $submitButton.prop('disabled', true);
+                $submitButton.html('Bekleyin...');
+                
+                $.ajax({
+                    type: "PUT",
+                    url: "/Admin/Product/Update",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        $submitButton.prop('disabled', false);
+                        $submitButton.html('Ürünü Düzenle');
+                        
+                        if (response.success) {
+                            $("#message").html('<div class="alert alert-success">Ürün başarıyla güncellendi</div>');
+                            // $("#uploadForm")[0].reset();
+                        } else {
+                            $("#message").html('<div class="alert alert-danger">Ürün güncellenirken bir hata oluştu</div>');
+                        }
+                    },
+                    error: function () {
+                        $submitButton.prop('disabled', false);
+                        $submitButton.html('Ürünü Düzenle');
+                        
+                        $("#message").html('<div class="alert alert-danger">Beklenmeyen bir hata oluştu.</div>');
+                    }
+                });
+            });
+            
+            $("#customFile").change(function (event) {
+                event.preventDefault();
+
+                $("#productImage").attr("src", "/img/loading.gif");
+
+                var formData = new FormData();
+                formData.append("ProductId", "@Model.Id");
+                var imageFile = $("#customFile")[0].files[0];
+                formData.append("NewProductImage", imageFile);
+                
+                $.ajax({
+                    type: "PUT",
+                    url: "/Admin/Product/UpdateImage",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        if (response.success) {
+                            $("#message").html('<div class="alert alert-success">Ürün görseli güncellendi</div>');
+                            $("#productImage").attr("src", "/img/Products/" + response.newImageUrl);
+                        } else {
+                            $("#message").html('<div class="alert alert-danger">Ürün görseli güncellenirken bir hata oluştu</div>');
+                        }
+                    },
+                    error: function () {
+                        $("#message").html('<div class="alert alert-danger">Beklenmeyen bir hata oluştu.</div>');
+                    }
+                });
+            });
+        });
+    </script>
+}
