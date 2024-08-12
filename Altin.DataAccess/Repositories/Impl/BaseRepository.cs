@@ -71,4 +71,16 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
         _context.Entry(entity).State = EntityState.Modified;
         return await _context.SaveChangesAsync();
     }
+    
+    public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)
+    {
+        return await _context.Set<TEntity>().AnyAsync(predicate);
+    }
+
+    public async Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate = null)
+    {
+        if (predicate is not null)
+            return await _context.Set<TEntity>().CountAsync(predicate);
+        return await _context.Set<TEntity>().CountAsync();
+    }
 }

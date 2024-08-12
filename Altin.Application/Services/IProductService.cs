@@ -6,6 +6,8 @@ namespace Altin.Application.Services;
 public interface IProductService
 {
     Task<GetProductModel> GetAsync(Guid id);
+    
+    Task<List<GetProductModel>> GetPopularProductsAsync();
 
     Task<List<GetProductModel>> GetAllAsync();
 
@@ -15,5 +17,5 @@ public interface IProductService
 
     Task<ProductImageUpdateReturnModel> UpdateImageAsync(Guid id, string imageUrl);
 
-    Task DeleteAsync(Guid id);
+    Task<ProductDeleteReturnModel> DeleteAsync(Guid id);
 }
