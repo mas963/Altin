@@ -1,4 +1,7 @@
-﻿namespace Altin.Web.Areas.Admin.Models;
+﻿using System;
+using Microsoft.AspNetCore.Http;
+
+namespace Altin.Web.Areas.Admin.Models;
 
 public class ProductImageUpdateViewModel
 {

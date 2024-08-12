@@ -17,4 +17,8 @@ public interface IBaseRepository<TEntity> where TEntity : BaseEntity
     Task<int> UpdateAsync(TEntity entity);
 
     Task<int> DeleteAsync(TEntity entity);
+
+    Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate);
+
+    Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate = null);
 }

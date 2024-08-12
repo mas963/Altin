@@ -6006,3 +6006,22 @@ Created using IcoMoon - icomoon.io
 }
 
 /*# sourceMappingURL=dashboard-free.css.map */
+
+/*pupular product badge*/
+
+.imageItem {
+  position:relative;
+  padding-top:20px;
+  display:inline-block;
+}
+.popularBadge{
+  position: absolute;
+  right:-20px;
+  top:10px;
+  background:red;
+  text-align: center;
+  border-radius: 30px 30px 30px 30px;
+  color:white;
+  padding:5px 10px;
+  font-size:15px;
+}

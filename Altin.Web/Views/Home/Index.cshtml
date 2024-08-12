@@ -1,265 +1,267 @@
-﻿@{
+﻿@model List<Altin.Application.Models.Product.GetProductModel>
+
+@{
     Layout = "_Layout";
     ViewData["Title"] = "Ana Sayfa";
 }
 
 <div class="container-fluid pt-5 spacing">
-<div class="container">
-<div class="p-3" style="background-color: rgba(197,65,48,0.07) !important;">
-<div class="row g-4 justify-content-center">
-<div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="counter bg-white rounded p-1">
-        <h5 style="color: #dbbf49;">Gram Altın</h5>
-        <div class="row">
-            <div class="col-4">
-                <b>Alış</b>
-                <p id="gramalis">1</p>
-            </div>
-            <div class="col-4">
-                <b>Satış</b>
-                <p id="gramsatis"></p>
-            </div>
-            <div class="col-4">
-                <b>Değişim</b>
-                <p id="gramyuzde"></p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="counter bg-white rounded p-1">
-        <h5 style="color: #dbbf49;">Çeyrek Altın</h5>
-        <div class="row">
-            <div class="col-4">
-                <b>Alış</b>
-                <p id="ceyrekalis"></p>
-            </div>
-            <div class="col-4">
-                <b>Satış</b>
-                <p id="ceyreksatis"></p>
-            </div>
-            <div class="col-4">
-                <b>Değişim</b>
-                <div>
-                    <p id="ceyrekyuzde"></p>
+    <div class="container">
+        <div class="p-3" style="background-color: rgba(197,65,48,0.07) !important;">
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="counter bg-white rounded p-1">
+                        <h5 style="color: #dbbf49;">Gram Altın</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <b>Alış</b>
+                                <p id="gramalis">1</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Satış</b>
+                                <p id="gramsatis"></p>
+                            </div>
+                            <div class="col-4">
+                                <b>Değişim</b>
+                                <p id="gramyuzde"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="counter bg-white rounded p-1">
+                        <h5 style="color: #dbbf49;">Çeyrek Altın</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <b>Alış</b>
+                                <p id="ceyrekalis"></p>
+                            </div>
+                            <div class="col-4">
+                                <b>Satış</b>
+                                <p id="ceyreksatis"></p>
+                            </div>
+                            <div class="col-4">
+                                <b>Değişim</b>
+                                <div>
+                                    <p id="ceyrekyuzde"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="counter bg-white rounded p-1">
+                        <h5 style="color: #dbbf49;">Yarım Altın</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <b>Alış</b>
+                                <p id="yarimalis"></p>
+                            </div>
+                            <div class="col-4">
+                                <b>Satış</b>
+                                <p id="yarimsatis"></p>
+                            </div>
+                            <div class="col-4">
+                                <b>Değişim</b>
+                                <div>
+                                    <p id="yarimyuzde"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="counter bg-white rounded p-1">
+                        <h5 style="color: #dbbf49;">22 Ayar</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <b>Alış</b>
+                                <p id="yirmiikialis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Satış</b>
+                                <p id="yirmiikisatis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Değişim</b>
+                                <div>
+                                    <p id="yirmiikiyuzde"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="counter bg-white rounded p-1">
+                        <h5 style="color: #dbbf49;">Tam Altın</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <b>Alış</b>
+                                <p id="tamalis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Satış</b>
+                                <p id="tamsatis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Değişim</b>
+                                <div>
+                                    <p id="tamyuzde"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="counter bg-white rounded p-1">
+                        <h5 style="color: #dbbf49;">Gremse Altın</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <b>Alış</b>
+                                <p id="gremsealis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Satış</b>
+                                <p id="gremsesatis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Değişim</b>
+                                <div>
+                                    <p id="gremseyuzde"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="counter bg-white rounded p-1">
+                        <h5 style="color: #dbbf49;">Ata Lira</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <b>Alış</b>
+                                <p id="ataalis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Satış</b>
+                                <p id="atasatis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Değişim</b>
+                                <div>
+                                    <p id="atayuzde"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="counter bg-white rounded p-1">
+                        <h5 style="color: #dbbf49;">Külçe Altın</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <b>Alış</b>
+                                <p id="kulcealis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Satış</b>
+                                <p id="kulcesatis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Değişim</b>
+                                <div>
+                                    <p id="kulceyuzde"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="counter bg-white rounded p-1">
+                        <h5 style="color: #dbbf49;">Dolar</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <b>Alış</b>
+                                <p id="dolaralis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Satış</b>
+                                <p id="dolarsatis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Değişim</b>
+                                <div>
+                                    <p id="dolaryuzde"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="counter bg-white rounded p-1">
+                        <h5 style="color: #dbbf49;">Euro</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <b>Alış</b>
+                                <p id="euroalis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Satış</b>
+                                <p id="eurosatis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Değişim</b>
+                                <div>
+                                    <p id="euroyuzde"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="counter bg-white rounded p-1">
+                        <h5 style="color: #dbbf49;">EUR/USD</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <b>Alış</b>
+                                <p id="eurusdalis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Satış</b>
+                                <p id="eurusdsatis">789</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Değişim</b>
+                                <div>
+                                    <p id="eurusdyuzde"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="counter bg-white rounded p-1">
+                        <h5 style="color: #dbbf49;">XAU/USD</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <b>Alış</b>
+                                <p id="xauusdalis">1963</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Satış</b>
+                                <p id="xauusdsatis">1965</p>
+                            </div>
+                            <div class="col-4">
+                                <b>Değişim</b>
+                                <div>
+                                    <p id="xauusdyuzde"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="counter bg-white rounded p-1">
-        <h5 style="color: #dbbf49;">Yarım Altın</h5>
-        <div class="row">
-            <div class="col-4">
-                <b>Alış</b>
-                <p id="yarimalis"></p>
-            </div>
-            <div class="col-4">
-                <b>Satış</b>
-                <p id="yarimsatis"></p>
-            </div>
-            <div class="col-4">
-                <b>Değişim</b>
-                <div>
-                    <p id="yarimyuzde"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="counter bg-white rounded p-1">
-        <h5 style="color: #dbbf49;">22 Ayar</h5>
-        <div class="row">
-            <div class="col-4">
-                <b>Alış</b>
-                <p id="yirmiikialis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Satış</b>
-                <p id="yirmiikisatis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Değişim</b>
-                <div>
-                    <p id="yirmiikiyuzde"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="counter bg-white rounded p-1">
-        <h5 style="color: #dbbf49;">Tam Altın</h5>
-        <div class="row">
-            <div class="col-4">
-                <b>Alış</b>
-                <p id="tamalis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Satış</b>
-                <p id="tamsatis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Değişim</b>
-                <div>
-                    <p id="tamyuzde"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="counter bg-white rounded p-1">
-        <h5 style="color: #dbbf49;">Gremse Altın</h5>
-        <div class="row">
-            <div class="col-4">
-                <b>Alış</b>
-                <p id="gremsealis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Satış</b>
-                <p id="gremsesatis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Değişim</b>
-                <div>
-                    <p id="gremseyuzde"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="counter bg-white rounded p-1">
-        <h5 style="color: #dbbf49;">Ata Lira</h5>
-        <div class="row">
-            <div class="col-4">
-                <b>Alış</b>
-                <p id="ataalis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Satış</b>
-                <p id="atasatis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Değişim</b>
-                <div>
-                    <p id="atayuzde"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="counter bg-white rounded p-1">
-        <h5 style="color: #dbbf49;">Külçe Altın</h5>
-        <div class="row">
-            <div class="col-4">
-                <b>Alış</b>
-                <p id="kulcealis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Satış</b>
-                <p id="kulcesatis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Değişim</b>
-                <div>
-                    <p id="kulceyuzde"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="counter bg-white rounded p-1">
-        <h5 style="color: #dbbf49;">Dolar</h5>
-        <div class="row">
-            <div class="col-4">
-                <b>Alış</b>
-                <p id="dolaralis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Satış</b>
-                <p id="dolarsatis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Değişim</b>
-                <div>
-                    <p id="dolaryuzde"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="counter bg-white rounded p-1">
-        <h5 style="color: #dbbf49;">Euro</h5>
-        <div class="row">
-            <div class="col-4">
-                <b>Alış</b>
-                <p id="euroalis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Satış</b>
-                <p id="eurosatis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Değişim</b>
-                <div>
-                    <p id="euroyuzde"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="counter bg-white rounded p-1">
-        <h5 style="color: #dbbf49;">EUR/USD</h5>
-        <div class="row">
-            <div class="col-4">
-                <b>Alış</b>
-                <p id="eurusdalis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Satış</b>
-                <p id="eurusdsatis">789</p>
-            </div>
-            <div class="col-4">
-                <b>Değişim</b>
-                <div>
-                    <p id="eurusdyuzde"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="counter bg-white rounded p-1">
-        <h5 style="color: #dbbf49;">XAU/USD</h5>
-        <div class="row">
-            <div class="col-4">
-                <b>Alış</b>
-                <p id="xauusdalis">1963</p>
-            </div>
-            <div class="col-4">
-                <b>Satış</b>
-                <p id="xauusdsatis">1965</p>
-            </div>
-            <div class="col-4">
-                <b>Değişim</b>
-                <div>
-                    <p id="xauusdyuzde"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
-</div>
 </div>
 
 <div class="container-fluid banner" style="background-color: rgba(197,65,48,0.07) !important;">
@@ -269,8 +271,10 @@
                 <div class="py-4">
                     <h1 class="display-3 text-dark">Ürünlerimize Göz</h1>
                     <p class="fw-normal display-3 text-dark mb-4">Attınız Mı?</p>
-                    <p class="mb-4 text-dark">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.</p>
-                    <a href="#" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">Tüm Ürünlere Göz At</a>
+                    <p class="mb-4 text-dark">The generated Lorem Ipsum is therefore always free from repetition
+                        injected humour, or non-characteristic words etc.</p>
+                    <a href="#" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">Tüm
+                        Ürünlere Göz At</a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -283,284 +287,234 @@
 </div>
 
 <div class="container-fluid fruite">
-<div class="container py-5">
-<div class="tab-class text-center">
-<div class="row g-4">
-    <div class="col-lg-4 text-start">
-        <h1>En Popüler Ürünler</h1>
-    </div>
-    <div class="col-lg-8 text-end">
-        <ul class="nav nav-pills d-inline-flex text-center mb-5">
-            <li class="nav-item">
-                <a class="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-1">
-                    <span class="text-dark" style="width: 130px;">Seçtiklerimiz</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
-                    <span class="text-dark" style="width: 130px;">Kolyeler</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-3">
-                    <span class="text-dark" style="width: 130px;">Bilezikler</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-4">
-                    <span class="text-dark" style="width: 130px;">Yüzükler</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="tab-content">
-<div id="tab-1" class="tab-pane fade p-0 active show">
-    <div class="row g-4">
-        <div class="col-lg-12">
+    <div class="container py-5">
+        <div class="tab-class text-center">
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                        </div>
-                    </div>
+                <div class="col-lg-4 text-start">
+                    <h1>En Popüler Ürünler</h1>
                 </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>BAltın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                        </div>
-                    </div>
+                <div class="col-lg-8 text-end">
+                    <ul class="nav nav-pills d-inline-flex text-center mb-5">
+                        <li class="nav-item">
+                            <a class="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-1">
+                                <span class="text-dark" style="width: 130px;">Seçtiklerimiz</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
+                                <span class="text-dark" style="width: 130px;">Kolyeler</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-3">
+                                <span class="text-dark" style="width: 130px;">Bilezikler</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-4">
+                                <span class="text-dark" style="width: 130px;">Yüzükler</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div id="tab-2" class="tab-pane fade p-0">
-    <div class="row g-4">
-        <div class="col-lg-12">
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane fade p-0 active show">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="row g-4">
+
+                                @foreach (var item in Model)
+                                {
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="~/img/Products/@item.ImageUrl" class="img-fluid w-100 rounded-top"
+                                                    alt="">
+                                            </div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>@item.Name</h4>
+                                                <p>@item.Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                <div id="tab-2" class="tab-pane fade p-0">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top"
+                                                alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Altın</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                                incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top"
+                                                alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Altın</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                                incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="tab-3" class="tab-pane fade p-0">
-    <div class="row g-4">
-        <div class="col-lg-12">
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                <div id="tab-3" class="tab-pane fade p-0">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top"
+                                                alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Altın</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                                incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top"
+                                                alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Altın</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                                incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                <div id="tab-4" class="tab-pane fade p-0">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top"
+                                                alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Altın</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                                incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top"
+                                                alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Altın</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                                incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="tab-4" class="tab-pane fade p-0">
-    <div class="row g-4">
-        <div class="col-lg-12">
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="tab-5" class="tab-pane fade show p-0">
-    <div class="row g-4">
-        <div class="col-lg-12">
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="rounded position-relative fruite-item">
-                        <div class="fruite-img">
-                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                            <h4>Altın</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                <div id="tab-5" class="tab-pane fade show p-0">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top"
+                                                alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Altın</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                                incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top"
+                                                alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Altın</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                                incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="rounded position-relative fruite-item">
+                                        <div class="fruite-img">
+                                            <img src="~/img/Screenshot_65.jpg" class="img-fluid w-100 rounded-top"
+                                                alt="">
+                                        </div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>Altın</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
+                                                incididunt</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -568,12 +522,8 @@
             </div>
         </div>
     </div>
-</div>
-</div>
-</div>
-</div>
 </div>
 
-@section Scripts{
+@section Scripts {
     <script src="~/js/script.js"></script>
 }

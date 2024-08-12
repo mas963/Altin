@@ -41,7 +41,17 @@
                             {
                                 <tr id="product-row-@product.Id">
                                     <td>
-                                        <img class="img-thumbnail" width="100" src="~/img/Products/@product.ImageUrl"/>
+                                        @if (product.IsPopular)
+                                        {
+                                            <div class="imageItem">
+                                                <span class="popularBadge">Popüler</span>
+                                                <img class="img-thumbnail" width="100" src="~/img/Products/@product.ImageUrl"/>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <img class="img-thumbnail" width="100" src="~/img/Products/@product.ImageUrl"/>
+                                        }
                                     </td>
                                     <td>
                                         @product.Name

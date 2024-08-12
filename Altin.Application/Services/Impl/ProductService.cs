@@ -33,9 +33,10 @@ public class ProductService : IProductService
         };
     }
 
-    public async Task<List<GetProductModel>> GetAllAsync()
+    public async Task<List<GetProductModel>> GetPopularProductsAsync()
     {
-        var products = await _productRepository.GetAllAsync();
+        var products = await _productRepository.GetAllAsync(x => x.IsPopular);
+        
         return products.Select(x => new GetProductModel
         {
             Id = x.Id,
@@ -45,14 +46,38 @@ public class ProductService : IProductService
         }).ToList();
     }
 
+    public async Task<List<GetProductModel>> GetAllAsync()
+    {
+        var products = await _productRepository.GetAllAsync();
+        return products.Select(x => new GetProductModel
+        {
+            Id = x.Id,
+            Name = x.Name,
+            Description = x.Description,
+            ImageUrl = x.ImageUrl,
+            IsPopular = x.IsPopular
+        }).ToList();
+    }
+
     public async Task AddAsync(ProductUploadModel model)
     {
         var product = new Product
         {
             Name = model.ProductName,
             Description = model.ProductDescription,
-            ImageUrl = model.ProductImageName
+            ImageUrl = model.ProductImageName,
+            IsPopular = model.IsPopularProduct
         };
+        
+        if (model.IsPopularProduct)
+        {
+            var popularProducts = await _productRepository.CountAsync(x => x.IsPopular);
+
+            if (popularProducts >= 8)
+            {
+                throw new BadRequestException("En fazla 8 adet popüler ürün ekleyebilirsiniz");
+            }
+        }
 
         await _productRepository.AddAsync(product);
     }
@@ -92,7 +117,7 @@ public class ProductService : IProductService
         };
     }
 
-    public async Task DeleteAsync(Guid id)
+    public async Task<ProductDeleteReturnModel> DeleteAsync(Guid id)
     {
         var product = await _productRepository.GetAsync(x => x.Id == id);
 
@@ -102,5 +127,10 @@ public class ProductService : IProductService
         }
         
         await _productRepository.DeleteAsync(product);
+        
+        return new ProductDeleteReturnModel
+        {
+            ProductImage = product.ImageUrl
+        };
     }
 }

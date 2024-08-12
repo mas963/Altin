@@ -1,7 +1,13 @@
-﻿using Altin.Application.Exceptions;
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Altin.Application.Exceptions;
 using Altin.Application.Models.Product;
 using Altin.Application.Services;
 using Altin.Web.Areas.Admin.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Altin.Web.Areas.Admin.Controllers;
@@ -55,23 +61,37 @@ public class ProductController : Controller
         var uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProductName + extension;
         var filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
-        using (var fileStream = new FileStream(filePath, FileMode.Create))
+        try
         {
-            await model.ProductImage.CopyToAsync(fileStream);
+            await using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await model.ProductImage.CopyToAsync(fileStream);
+            }
+
+            var product = new ProductUploadModel
+            {
+                ProductName = model.ProductName,
+                ProductDescription = model.ProductDescription,
+                ProductImageName = uniqueFileName,
+                IsPopularProduct = model.IsPopularProduct
+            };
+
+            await _productService.AddAsync(product);
+
+            Thread.Sleep(2000); // TODO: delete
+
+            return Json(new { success = true, message = "Ürün başarıyla eklendi" });
         }
-
-        var product = new ProductUploadModel
+        catch (BadRequestException ex)
         {
-            ProductName = model.ProductName,
-            ProductDescription = model.ProductDescription,
-            ProductImageName = uniqueFileName
-        };
+            // Eğer bir hata oluşursa yüklenen resmi sil
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+            }
 
-        await _productService.AddAsync(product);
-
-        Thread.Sleep(2000); // TODO: delete
-
-        return Json(new { success = true, message = "Ürün başarıyla eklendi" });
+            return Json(new { success = false, message = "Ürün eklenirken bir hata oluştu: " + ex.Message });
+        }
     }
 
     public async Task<IActionResult> Update(Guid id)
@@ -108,7 +128,7 @@ public class ProductController : Controller
             return Json(new { success = false, message = ex.Message });
         }
     }
-    
+
     [HttpPut]
     public async Task<IActionResult> UpdateImage([FromForm] ProductImageUpdateViewModel model)
     {
@@ -124,7 +144,8 @@ public class ProductController : Controller
 
             if (!permittedExtensions.Contains(extension))
             {
-                return Json(new { success = false, message = "Sadece .jpg, .jpeg, .png uzantılı dosyalar yüklenebilir." });
+                return Json(new
+                    { success = false, message = "Sadece .jpg, .jpeg, .png uzantılı dosyalar yüklenebilir." });
             }
 
             var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "img/Products");
@@ -134,7 +155,7 @@ public class ProductController : Controller
             }
 
             var product = await _productService.GetAsync(model.ProductId);
-            
+
             var uniqueFileName = Guid.NewGuid().ToString() + "_" + product.Name + extension;
             var filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
@@ -142,19 +163,20 @@ public class ProductController : Controller
             {
                 await model.NewProductImage.CopyToAsync(fileStream);
             }
-            
+
             var updatedProduct = await _productService.UpdateImageAsync(model.ProductId, uniqueFileName);
-            
+
             // Eski resmi silme
             if (!string.IsNullOrEmpty(updatedProduct.OldImageName))
             {
-                var oldImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "Products", updatedProduct.OldImageName);
+                var oldImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "Products",
+                    updatedProduct.OldImageName);
                 if (System.IO.File.Exists(oldImagePath))
                 {
                     System.IO.File.Delete(oldImagePath);
                 }
             }
-            
+
             Thread.Sleep(3000); // TODO: delete
 
             return Json(new { success = true, newImageUrl = uniqueFileName });
@@ -170,7 +192,15 @@ public class ProductController : Controller
     {
         try
         {
-            await _productService.DeleteAsync(id);
+            var productDeleteReturnModel = await _productService.DeleteAsync(id);
+
+            var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "Products",
+                productDeleteReturnModel.ProductImage);
+
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
 
             return Json(new { success = true });
         }
