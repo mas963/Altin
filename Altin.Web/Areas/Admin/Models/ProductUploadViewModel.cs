@@ -8,4 +8,5 @@ public class ProductUploadViewModel
     public string ProductDescription { get; set; }
     public IFormFile ProductImage { get; set; }
     public bool IsPopularProduct { get; set; }
+    public List<Guid> CategoryIds { get; set; }
 }

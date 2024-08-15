@@ -3,7 +3,7 @@ using Altin.Core;
 
 namespace Altin.DataAccess;
 
-public interface IBaseRepository<TEntity> where TEntity : BaseEntity
+public interface IBaseRepository<TEntity>
 {
     Task<TEntity> GetAsync(
         Expression<Func<TEntity, bool>> filter = null,

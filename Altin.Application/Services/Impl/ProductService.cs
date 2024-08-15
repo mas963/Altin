@@ -9,21 +9,23 @@ namespace Altin.Application.Services.Impl;
 public class ProductService : IProductService
 {
     private readonly IProductRepository _productRepository;
+    private readonly ICategoryRepository _categoryRepository;
 
-    public ProductService(IProductRepository productRepository)
+    public ProductService(IProductRepository productRepository, ICategoryRepository categoryRepository)
     {
         _productRepository = productRepository;
+        _categoryRepository = categoryRepository;
     }
 
     public async Task<GetProductModel> GetAsync(Guid id)
     {
         var product = await _productRepository.GetAsync(x => x.Id == id);
-        
+
         if (product == null)
         {
             throw new NotFoundException("Product not found");
         }
-        
+
         return new GetProductModel
         {
             Id = product.Id,
@@ -36,7 +38,7 @@ public class ProductService : IProductService
     public async Task<List<GetProductModel>> GetPopularProductsAsync()
     {
         var products = await _productRepository.GetAllAsync(x => x.IsPopular);
-        
+
         return products.Select(x => new GetProductModel
         {
             Id = x.Id,
@@ -66,9 +68,9 @@ public class ProductService : IProductService
             Name = model.ProductName,
             Description = model.ProductDescription,
             ImageUrl = model.ProductImageName,
-            IsPopular = model.IsPopularProduct
+            IsPopular = model.IsPopularProduct,
         };
-        
+
         if (model.IsPopularProduct)
         {
             var popularProducts = await _productRepository.CountAsync(x => x.IsPopular);
@@ -80,12 +82,17 @@ public class ProductService : IProductService
         }
 
         await _productRepository.AddAsync(product);
+        
+        foreach (var categoryId in model.CategoryIds)
+        {
+            await _categoryRepository.AddCategoryProductAsync(categoryId, product.Id);
+        }
     }
-    
+
     public async Task UpdateAsync(ProductUpdateReq model)
     {
         var product = await _productRepository.GetAsync(x => x.Id == model.Id);
-        
+
         if (product == null)
         {
             throw new NotFoundException("Product not found");
@@ -93,24 +100,24 @@ public class ProductService : IProductService
 
         product.Name = model.ProductName;
         product.Description = model.ProductDescription;
-        
+
         await _productRepository.UpdateAsync(product);
     }
 
     public async Task<ProductImageUpdateReturnModel> UpdateImageAsync(Guid id, string imageUrl)
     {
         var product = await _productRepository.GetAsync(x => x.Id == id);
-        
+
         if (product == null)
         {
             throw new NotFoundException("Product not found");
         }
-        
+
         var oldImageName = product.ImageUrl;
         product.ImageUrl = imageUrl;
-        
+
         await _productRepository.UpdateAsync(product);
-        
+
         return new ProductImageUpdateReturnModel
         {
             OldImageName = oldImageName
@@ -125,9 +132,9 @@ public class ProductService : IProductService
         {
             throw new NotFoundException("Product not found");
         }
-        
+
         await _productRepository.DeleteAsync(product);
-        
+
         return new ProductDeleteReturnModel
         {
             ProductImage = product.ImageUrl

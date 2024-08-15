@@ -38,6 +38,7 @@ public class ProductController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Upload([FromForm] ProductUploadViewModel model)
     {
         if (model.ProductImage == null)
@@ -74,7 +75,8 @@ public class ProductController : Controller
                 ProductName = model.ProductName,
                 ProductDescription = model.ProductDescription,
                 ProductImageName = uniqueFileName,
-                IsPopularProduct = model.IsPopularProduct
+                IsPopularProduct = model.IsPopularProduct,
+                CategoryIds = model.CategoryIds
             };
 
             await _productService.AddAsync(product);

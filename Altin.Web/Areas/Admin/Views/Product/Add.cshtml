@@ -46,7 +46,7 @@
                         <div class="form-group">
                             <label for="multipleSelectCategory">Kategoriler</label>
                             <br>
-                            <select class="form-select" multiple aria-label="multipleSelectCategory">
+                            <select class="form-select" multiple aria-label="multipleSelectCategory" id="multipleSelectCategory">
                                 <option selected>Kategorileri Seç</option>
                                 @foreach (var category in categories)
                                 {
@@ -88,7 +88,11 @@
                 formData.append("ProductDescription", $("#inputProductDescription").val());
                 formData.append("ProductImage", $("#customFile")[0].files[0]);
                 formData.append("IsPopularProduct", $("#inputPopularProduct").is(":checked"));
-                formData.append("CategoryIds", $("#multipleSelectCategory").val());
+
+                var selectedCategories = $("#multipleSelectCategory").val();
+                $.each(selectedCategories, function(index, value) {
+                    formData.append("CategoryIds", value);
+                });
 
                 var $submitButton = $("#submitButton");
                 $submitButton.prop('disabled', true);
