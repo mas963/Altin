@@ -6,4 +6,6 @@ public class Product : BaseEntity
     public string Description { get; set; }
     public string ImageUrl { get; set; }
     public bool IsPopular { get; set; } = false;
+    
+    public ICollection<CategoryProduct> CategoryProducts { get; set; }
 }

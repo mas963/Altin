@@ -10,4 +10,8 @@
       <Folder Include="Enums\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Altin.Shared\Altin.Shared.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -1,13 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Altin.Application.Exceptions;
+﻿using Altin.Application.Exceptions;
 using Altin.Application.Models.Product;
 using Altin.Application.Services;
 using Altin.Web.Areas.Admin.Models;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Altin.Web.Areas.Admin.Controllers;
@@ -17,11 +11,14 @@ public class ProductController : Controller
 {
     private readonly IWebHostEnvironment _webHostEnvironment;
     private readonly IProductService _productService;
+    private readonly ICategoryService _categoryService;
 
-    public ProductController(IWebHostEnvironment webHostEnvironment, IProductService productService)
+    public ProductController(IWebHostEnvironment webHostEnvironment, IProductService productService,
+        ICategoryService categoryService)
     {
         _webHostEnvironment = webHostEnvironment;
         _productService = productService;
+        _categoryService = categoryService;
     }
 
     public async Task<IActionResult> Index()
@@ -31,8 +28,12 @@ public class ProductController : Controller
         return View(products);
     }
 
-    public IActionResult Add()
+    public async Task<IActionResult> Add()
     {
+        var categories = await _categoryService.GetAllAsync();
+        
+        ViewData["Categories"] = categories;
+        
         return View();
     }
 

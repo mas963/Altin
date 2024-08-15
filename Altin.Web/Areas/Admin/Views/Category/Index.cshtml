@@ -1,0 +1,155 @@
+﻿@model List<Altin.Application.Models.Category.GetCategoryModel>
+
+@{
+    Layout = "_AdminLayout";
+    ViewBag.NavbarTitle = "Kategori Yönetimi";
+}
+
+<div class="panel-header panel-header-sm">
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <b class="title">Kategoriler</b>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Kategori İsmi</th>
+                                <th>Sırası</th>
+                                <th class="text-right">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var category in Model)
+                            {
+                                <tr id="category-row-@category.Id">
+                                    <td>@category.Name</td>
+                                    <td>@category.CategoryOrder</td>
+                                    <td class="text-right">
+                                        <button type="button" rel="tooltip" class="btn btn-info btn-sm btn-icon">
+                                            <i class="now-ui-icons education_glasses"></i>
+                                        </button>
+                                        <a href="/Admin/Product/Update/?id=product.Id">
+                                            <button type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
+                                                <i class="now-ui-icons ui-2_settings-90"></i>
+                                            </button>
+                                        </a>
+                                        <button type="button" rel="tooltip" class="btn btn-danger btn-sm btn-icon"
+                                            onclick="deleteCategory('@category.Id')">
+                                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <b class="title">Kategori Ekle</b>
+                </div>
+                <div class="card-body">
+                    <div id="message"></div>
+                    <form id="formCreateCategory">
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <label for="inputCategoryName">Kategori İsmi</label>
+                            <input type="text" class="form-control" id="inputCategoryName"
+                                placeholder="Kategori ismini giriniz">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label>Kategori Sırası</label>
+                                <div class="input-group">
+                                    <button class="btn btn-secondary" type="button" id="buttonDecrement">-</button>
+                                    <input type="text" class="form-control text-center" id="inputCategoryOrder"
+                                        value="1" readonly>
+                                    <button class="btn btn-secondary" type="button" id="buttonIncrement">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="submitButton">Kategoriyi Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            var count = 1;
+
+            $("#buttonIncrement").click(function () {
+                count++;
+                $("#inputCategoryOrder").val(count);
+            });
+
+            $("#buttonDecrement").click(function () {
+                if (count > 1) {
+                    count--;
+                    $("#inputCategoryOrder").val(count);
+                }
+            });
+
+            $("#formCreateCategory").submit(function (e) {
+                e.preventDefault();
+
+                var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
+
+                var name = $("#inputCategoryName").val();
+                var order = $("#inputCategoryOrder").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/Category/Create",
+                    contentType: "application/json",
+                    data: JSON.stringify({ Name: name, CategoryOrder: order }),
+                    headers: {
+                        "RequestVerificationToken": antiForgeryToken
+                    },
+                    success: function (data) {
+                        $("#message").html('<div class="alert alert-success">Kategori eklendi</div>');
+                        $("#formCreateCategory")[0].reset();
+                    },
+                    error: function (data) {
+                        if (data.status === 400) {
+                            $("#message").html('<div class="alert alert-danger">' + data.responseText + '</div>');
+                        } else {
+                            $("#message").html('<div class="alert alert-danger">Beklenmeyen bir hata oluştu</div>');
+                        }
+                    }
+                });
+            });
+        });
+
+        function deleteCategory(categoryId) {
+            if (confirm('Bu kategoriyi silmek istediginizden emin misiniz?')) {
+                $.ajax({
+                    url: '/Admin/Category/Delete/?id=' + categoryId,
+                    type: 'DELETE',
+                    contentType: 'application/json',
+                    success: function (response) {
+                        $("#category-row-" + categoryId).remove();
+                    },
+                    error: function () {
+                        alert('Kategori silinirken bir hata oluştu.');
+                    }
+                });
+            }
+        }
+    </script>
+}

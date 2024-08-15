@@ -1707,12 +1707,12 @@ fieldset[disabled] .btn-link.active {
 }
 
 .input-group .form-control:not(:first-child):not(:last-child),
-.input-group-btn:not(:first-child):not(:last-child) {
-  border-radius: 30px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-left: 0 none;
-}
+/*.input-group-btn:not(:first-child):not(:last-child) {*/
+/*  border-radius: 30px;*/
+/*  border-top-left-radius: 0;*/
+/*  border-bottom-left-radius: 0;*/
+/*  border-left: 0 none;*/
+/*}*/
 
 .input-group .form-control:first-child,
 .input-group-btn:first-child>.dropdown-toggle,

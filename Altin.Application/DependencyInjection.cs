@@ -20,6 +20,7 @@ public static class DependencyInjection
         services.AddScoped<ITemplateService, TemplateService>();
         services.AddScoped<IEmailService, EmailService>();
         services.AddScoped<IProductService, ProductService>();
+        services.AddScoped<ICategoryService, CategoryService>();
 
         services.AddAutoMapper(typeof(IMappingProfilesMarker));
 

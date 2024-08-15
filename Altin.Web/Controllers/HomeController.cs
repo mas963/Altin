@@ -1,7 +1,9 @@
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Altin.Models;
 using Altin.Application.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Altin.Controllers;
 

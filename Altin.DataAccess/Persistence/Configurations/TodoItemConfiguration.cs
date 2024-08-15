@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Altin.DataAccess;
+namespace Altin.DataAccess.Persistence.Configurations;
 
 public class TodoItemConfiguration : IEntityTypeConfiguration<TodoItem>
 {

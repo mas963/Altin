@@ -225,9 +225,20 @@
     background-size: cover;
 }
 
+.page-header-products {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../img/Jewelry.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 @media (min-width: 992px) {
     .hero-header,
     .page-header {
+        margin-top: 152px !important;
+    }
+    .page-header-products {
         margin-top: 152px !important;
     }
 }
@@ -236,6 +247,9 @@
     .hero-header,
     .page-header {
         margin-top: 97px !important;
+    }
+    .page-header-products {
+        margin-top: 152px !important;
     }
 }
 /*** Hero Header end ***/
@@ -291,6 +305,7 @@
 
 .fruite .fruite-categorie .fruite-name a {
     transition: 0.5s;
+    color: #c54130 !important;
 }
 
 .fruite .fruite-categorie .fruite-name a:hover {

@@ -14,6 +14,7 @@ public static class DependencyInjection
         services.AddScoped<ITodoItemRepository, TodoItemRepository>();
         services.AddScoped<ITodoListRepository, TodoListRepository>();
         services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
 
         var connectionString = configuration.GetConnectionString("DefaultConnection");
 
