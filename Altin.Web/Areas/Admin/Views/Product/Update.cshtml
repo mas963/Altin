@@ -1,8 +1,11 @@
-﻿@model Altin.Application.Models.Product.ProductUpdateModel
+﻿@using Altin.Application.Models.Category
+@model Altin.Application.Models.Product.ProductUpdateModel
 
 @{
     Layout = "_AdminLayout";
     ViewBag.NavbarTitle = "Ürün Düzenle";
+    
+    var categories = ViewData["CategoriesToProduct"] as List<GetCategoryWithSelectedModel>;
 }
 
 <div class="panel-header panel-header-sm">
@@ -17,6 +20,7 @@
                 <div class="card-body">
                     <div id="message"></div>
                     <form id="uploadForm">
+                        @Html.AntiForgeryToken()
                         <div class="form-group">
                             <label for="inputProductName">Ürün İsmi</label>
                             <input type="text" class="form-control" id="inputProductName" value="@Model.ProductName">
@@ -24,6 +28,20 @@
                         <div class="form-group">
                             <label for="inputProductDescription">Ürün Açıklaması</label>
                             <input type="text" class="form-control" id="inputProductDescription" value="@Model.ProductDescription">
+                        </div>
+
+                        <hr/>
+
+                        <div class="form-group">
+                            <label for="multipleSelectCategory">Kategoriler</label>
+                            <br>
+                            <select class="form-select" multiple aria-label="multipleSelectCategory" id="multipleSelectCategory">
+                                <option>Kategorileri Seç</option>
+                                @foreach (var category in categories)
+                                {
+                                    <option @(category.Selected ? "selected" : "") value="@category.Id">@category.Name</option>
+                                }
+                            </select>
                         </div>
 
                         <button type="submit" class="btn btn-primary" id="submitButton">Ürünü Düzenle</button>
@@ -63,11 +81,18 @@
         $(document).ready(function () {
             $("#uploadForm").submit(function (e) {
                 e.preventDefault();
+
+                var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
                 
                 var formData = new FormData();
                 formData.append("Id", "@Model.Id");
                 formData.append("ProductName", $("#inputProductName").val());
                 formData.append("ProductDescription", $("#inputProductDescription").val());
+
+                var selectedCategories = $("#multipleSelectCategory").val();
+                $.each(selectedCategories, function(index, value) {
+                    formData.append("CategoryIds", value);
+                });
                 
                 var $submitButton = $("#submitButton");
                 $submitButton.prop('disabled', true);
@@ -77,6 +102,9 @@
                     type: "PUT",
                     url: "/Admin/Product/Update",
                     data: formData,
+                    headers: {
+                        "RequestVerificationToken": antiForgeryToken
+                    },
                     processData: false,
                     contentType: false,
                     success: function (response) {

@@ -85,7 +85,7 @@ public class ProductService : IProductService
         
         foreach (var categoryId in model.CategoryIds)
         {
-            await _categoryRepository.AddCategoryProductAsync(categoryId, product.Id);
+            await _categoryRepository.AddCategoryToProductAsync(categoryId, product.Id);
         }
     }
 
@@ -102,6 +102,13 @@ public class ProductService : IProductService
         product.Description = model.ProductDescription;
 
         await _productRepository.UpdateAsync(product);
+
+        await _categoryRepository.DeleteAllCategoryToProductAsync(product.Id);
+        
+        foreach (var categoryId in model.CategoryIds)
+        {
+            await _categoryRepository.AddCategoryToProductAsync(categoryId, product.Id);
+        }
     }
 
     public async Task<ProductImageUpdateReturnModel> UpdateImageAsync(Guid id, string imageUrl)

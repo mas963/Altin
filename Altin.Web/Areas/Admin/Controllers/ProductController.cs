@@ -100,7 +100,7 @@ public class ProductController : Controller
     public async Task<IActionResult> Update(Guid id)
     {
         var product = await _productService.GetAsync(id);
-
+        
         if (product == null)
         {
             return NotFound();
@@ -114,10 +114,13 @@ public class ProductController : Controller
             ProductImageUrl = product.ImageUrl
         };
 
+        ViewData["CategoriesToProduct"] = await _categoryService.GetAllWithSelectedAsync(id);
+        
         return View(model);
     }
 
     [HttpPut]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Update([FromForm] ProductUpdateReq model)
     {
         try

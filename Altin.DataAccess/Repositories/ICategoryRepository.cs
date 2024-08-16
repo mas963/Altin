@@ -4,5 +4,7 @@ namespace Altin.DataAccess.Repositories;
 
 public interface ICategoryRepository : IBaseRepository<Category>
 {
-    Task AddCategoryProductAsync(Guid categoryId, Guid productId);
+    Task<List<Guid>> GetCategoryIdToProductAsync(Guid productId);
+    Task AddCategoryToProductAsync(Guid categoryId, Guid productId);
+    Task DeleteAllCategoryToProductAsync(Guid productId);
 }

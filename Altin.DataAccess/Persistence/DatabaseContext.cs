@@ -13,6 +13,8 @@ public class DatabaseContext : IdentityDbContext<ApplicationUser>
 
     public DatabaseContext(DbContextOptions options, IClaimService claimService) : base(options)
     {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
         _claimService = claimService;
     }
 
@@ -34,11 +36,9 @@ public class DatabaseContext : IdentityDbContext<ApplicationUser>
             switch (entry.State)
             {
                 case EntityState.Added:
-                    entry.Entity.CreatedBy = _claimService.GetUserId();
                     entry.Entity.CreatedOn = DateTime.Now;
                     break;
                 case EntityState.Modified:
-                    entry.Entity.UpdatedBy = _claimService.GetUserId();
                     entry.Entity.UpdatedOn = DateTime.Now;
                     break;
             }

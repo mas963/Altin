@@ -21,8 +21,29 @@ public class CategoryService : ICategoryService
         {
             Id = x.Id,
             Name = x.Name,
-            CategoryOrder = x.CategoryOrder
+            CategoryOrder = x.CategoryOrder,
+            NormalizedName = x.NormalizeName,
         }).ToList();
+    }
+
+    public async Task<List<GetCategoryWithSelectedModel>> GetAllWithSelectedAsync(Guid id)
+    {
+        var allCategories = await _categoryRepository.GetAllAsync();
+        var selectedCategoryId = await _categoryRepository.GetCategoryIdToProductAsync(id);
+
+        var getCategoryWithSelectedModel = new List<GetCategoryWithSelectedModel>();
+        foreach (var category in allCategories)
+        {
+            getCategoryWithSelectedModel.Add(new GetCategoryWithSelectedModel
+            {
+                Id = category.Id,
+                Name = category.Name,
+                CategoryOrder = category.CategoryOrder,
+                Selected = selectedCategoryId.Contains(category.Id)
+            });
+        }
+        
+        return getCategoryWithSelectedModel;
     }
 
     public async Task CreateAsync(CreateCategoryModel model)
