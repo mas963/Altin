@@ -1,4 +1,4 @@
-﻿@model List<Altin.Application.Models.Product.GetProductModel>
+﻿@model Altin.Application.Models.Product.GetProductWithPagination
 
 @{
     Layout = "_AdminLayout";
@@ -37,7 +37,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach (var product in Model)
+                            @foreach (var product in Model.Products)
                             {
                                 <tr id="product-row-@product.Id">
                                     <td>

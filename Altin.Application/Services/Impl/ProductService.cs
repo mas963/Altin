@@ -48,17 +48,56 @@ public class ProductService : IProductService
         }).ToList();
     }
 
-    public async Task<List<GetProductModel>> GetAllAsync()
+    public async Task<GetProductWithPagination> GetAllAsync(int page = 1, int size = 9)
     {
-        var products = await _productRepository.GetAllAsync();
-        return products.Select(x => new GetProductModel
+        int totalProduct = await _productRepository.CountAsync();
+        var products = await _productRepository.GetAllWithPaginationAsync(page, size);
+
+        var result = new GetProductWithPagination
         {
-            Id = x.Id,
-            Name = x.Name,
-            Description = x.Description,
-            ImageUrl = x.ImageUrl,
-            IsPopular = x.IsPopular
-        }).ToList();
+            Products = products.Select(x => new GetProductModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Description = x.Description,
+                ImageUrl = x.ImageUrl
+            }).ToList(),
+            CurrentPage = page,
+            TotalPages = (int)Math.Ceiling(totalProduct / (double)size)
+        };
+
+        return result;
+    }
+
+    public async Task<GetProductWithPagination> GetAllByCategoryAsync(string categoryNormalizeName, int page = 1,
+        int size = 9)
+    {
+        var totalProduct = await _productRepository.CountByCategoryAsync(categoryNormalizeName);
+        var products = await _productRepository.GetAllByCategoryWithPaginationAsync(categoryNormalizeName, page, size);
+        var category = await _categoryRepository.GetAsync(x => x.NormalizeName == categoryNormalizeName);
+
+        if (products.Count == 0)
+        {
+            throw new NotFoundException("Kategori bulunamadı");
+        }
+
+        var result = new GetProductWithPagination
+        {
+            Products = products.Select(x => new GetProductModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Description = x.Description,
+                ImageUrl = x.ImageUrl
+            }).ToList(),
+            
+            CategoryName = category.Name,
+            CategoryNormalizeName = category.NormalizeName,
+            CurrentPage = page,
+            TotalPages = (int)Math.Ceiling(totalProduct / (double)size)
+        };
+
+        return result;
     }
 
     public async Task AddAsync(ProductUploadModel model)
@@ -82,7 +121,7 @@ public class ProductService : IProductService
         }
 
         await _productRepository.AddAsync(product);
-        
+
         foreach (var categoryId in model.CategoryIds)
         {
             await _categoryRepository.AddCategoryToProductAsync(categoryId, product.Id);
@@ -104,7 +143,7 @@ public class ProductService : IProductService
         await _productRepository.UpdateAsync(product);
 
         await _categoryRepository.DeleteAllCategoryToProductAsync(product.Id);
-        
+
         foreach (var categoryId in model.CategoryIds)
         {
             await _categoryRepository.AddCategoryToProductAsync(categoryId, product.Id);

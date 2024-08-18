@@ -6,10 +6,13 @@ namespace Altin.Application.Services;
 public interface IProductService
 {
     Task<GetProductModel> GetAsync(Guid id);
-    
+
     Task<List<GetProductModel>> GetPopularProductsAsync();
 
-    Task<List<GetProductModel>> GetAllAsync();
+    Task<GetProductWithPagination> GetAllAsync(int page = 1, int pageSize = 9);
+
+    Task<GetProductWithPagination> GetAllByCategoryAsync(string categoryNormalizeName, int page = 1,
+        int size = 9);
 
     Task AddAsync(ProductUploadModel model);
 
