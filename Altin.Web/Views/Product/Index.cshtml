@@ -98,8 +98,7 @@
 
                                     @if (Model.CurrentPage < Model.TotalPages)
                                     {
-                                    <a href='/Urunler@(Model.CategoryNormalizeName != null ? $"?kategori={Model.CategoryNormalizeName}&sayfa={Model.CurrentPage + 1}" : $"?sayfa={Model.CurrentPage + 1}")' class="rounded">&laquo;</a>
-
+                                        <a href='/Urunler@(Model.CategoryNormalizeName != null ? $"?kategori={Model.CategoryNormalizeName}&sayfa={Model.CurrentPage + 1}" : $"?sayfa={Model.CurrentPage + 1}")' class="rounded">&raquo;</a>
                                     }
                                     else
                                     {

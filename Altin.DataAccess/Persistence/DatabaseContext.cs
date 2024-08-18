@@ -23,6 +23,8 @@ public class DatabaseContext : IdentityDbContext<ApplicationUser>
     public DbSet<Product> Products { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<CategoryProduct> CategoryProducts { get; set; }
+    public DbSet<News> News { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

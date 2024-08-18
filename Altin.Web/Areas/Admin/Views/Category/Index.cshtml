@@ -113,6 +113,10 @@
                 var name = $("#inputCategoryName").val();
                 var order = $("#inputCategoryOrder").val();
 
+                var submitButton = $("#submitButton");
+                submitButton.prop('disabled', true);
+                submitButton.html('Bekleyin...');
+
                 $.ajax({
                     type: "POST",
                     url: "/Admin/Category/Create",
@@ -122,10 +126,14 @@
                         "RequestVerificationToken": antiForgeryToken
                     },
                     success: function (data) {
+                        submitButton.prop('disabled', false);
+                        submitButton.html('Kategoriyi Ekle');
                         $("#message").html('<div class="alert alert-success">Kategori eklendi</div>');
                         $("#formCreateCategory")[0].reset();
                     },
                     error: function (data) {
+                        submitButton.prop('disabled', false);
+                        submitButton.html('Kategoriyi Ekle');
                         if (data.status === 400) {
                             $("#message").html('<div class="alert alert-danger">' + data.responseText + '</div>');
                         } else {

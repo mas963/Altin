@@ -21,6 +21,7 @@ public static class DependencyInjection
         services.AddScoped<IEmailService, EmailService>();
         services.AddScoped<IProductService, ProductService>();
         services.AddScoped<ICategoryService, CategoryService>();
+        services.AddScoped<INewsService, NewsService>();
 
         services.AddAutoMapper(typeof(IMappingProfilesMarker));
 

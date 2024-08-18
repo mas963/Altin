@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.NavbarTitle = "Haber & Duyuru Oluştur";
+    Layout = "_AdminLayout";
+}
+
+<div class="panel-header panel-header-sm">
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Haber & Duyuru Oluştur</h5>
+                </div>
+                <div class="card-body">
+                    <div id="message"></div>
+                    <form id="newsCreateForm" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputNewsTitle">Başlık</label>
+                                    <input type="text" class="form-control" id="inputNewsTitle" placeholder="Başlık giriniz">
+                                </div>
+                                <div class="form-group">
+                                    <label for="textAreaNewsContent">İçerik</label>
+                                    <textarea class="form-control" id="textAreaNewsContent" rows="5" placeholder="İçerik giriniz"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="~/admin/assets/img/no-image.jpg" id="newsImage" width="300"/>
+                                <br/>
+                                <label class="form-label" for="customFile">Kapak Görseli</label>
+                                <input type="file" class="form-control" id="customFile"/>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Oluştur</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#newsCreateForm').submit(function (e) {
+                e.preventDefault();
+
+                var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
+                
+                var formData = new FormData();
+                
+                formData.append("Title", $("#inputNewsTitle").val());
+                formData.append("Content", $("#textAreaNewsContent").val());
+                formData.append("Image", $("#customFile")[0].files[0]);
+                
+                var submitButton = $("#submitButton");
+                submitButton.prop('disabled', true);
+                submitButton.html('Bekleyin...');
+                
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/News/Create",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        "RequestVerificationToken": antiForgeryToken
+                    },
+                    success: function (response) {
+                        submitButton.prop('disabled', false);
+                        submitButton.html('Oluştur');
+                        
+                        $("#message").html('<div class="alert alert-success">' + response.message + '</div>');
+                        $("#newsCreateForm")[0].reset();
+                    },
+                    error: function (data){
+                        submitButton.prop('disabled', false);
+                        submitButton.html('Oluştur');
+                        
+                        if (data.status === 400) {
+                            var response = JSON.parse(data.responseText);
+                            $("#message").html('<div class="alert alert-danger">' + response.message + '</div>');
+                        } else {
+                            $("#message").html('<div class="alert alert-danger">Beklenmeyen bir hata oluştu</div>');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}
