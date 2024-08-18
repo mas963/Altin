@@ -21,9 +21,9 @@ public class ProductController : Controller
         _categoryService = categoryService;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int page = 1)
     {
-        var products = await _productService.GetAllAsync();
+        var products = await _productService.GetAllAsync(page: page);
 
         return View(products);
     }
