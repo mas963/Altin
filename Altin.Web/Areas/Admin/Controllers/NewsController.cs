@@ -19,9 +19,11 @@ public class NewsController : Controller
     }
 
     // GET
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var news = await _newsService.GetListAsync(); 
+        
+        return View(news);
     }
 
     public IActionResult Create()
@@ -84,6 +86,109 @@ public class NewsController : Controller
             }
 
             return BadRequest(new { message = "Haber yüklenirken bir hata oluştu: " + ex.Message });
+        }
+    }
+    
+    public async Task<IActionResult> Edit(Guid id)
+    {
+        try
+        {
+            var news = await _newsService.GetAsync(id);
+            
+            return View(news);
+        }
+        catch (NotFoundException ex)
+        {
+            return NotFound(new { message = ex.Message });
+        }
+    }
+    
+    [HttpPut]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit([FromForm]EditNewsModel model)
+    {
+        try
+        {
+            await _newsService.EditAsync(model);
+
+            return Ok(new { message = "Haber & Duyuru başarıyla güncellendi" });
+        }
+        catch (NotFoundException ex)
+        {
+            return NotFound(new { message = ex.Message });
+        }
+    }
+    
+    [HttpPut]
+    public async Task<IActionResult> EditImage(EditImageNewsViewModel model)
+    {
+        if (model.Image == null)
+        {
+            return BadRequest(new {message = "Lütfen bir dosya seçin." });
+        }
+
+        var permittedExtensions = new[] { ".jpg", ".jpeg", ".png" };
+        var extension = Path.GetExtension(model.Image.FileName).ToLowerInvariant();
+
+        if (!permittedExtensions.Contains(extension))
+        {
+            return BadRequest(new { message = "Sadece .jpg, .jpeg, .png uzantılı dosyalar yüklenebilir." });
+        }
+
+        var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "img/News");
+        if (!Directory.Exists(uploadsFolder))
+        {
+            Directory.CreateDirectory(uploadsFolder);
+        }
+
+        var news = await _newsService.GetAsync(model.Id);
+
+        var uniqueFileName = Guid.NewGuid().ToString() + "_" + news.Title + extension;
+        var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+        try
+        {
+            await using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await model.Image.CopyToAsync(fileStream);
+            }
+
+            var editNewsModel = new EditImageNewsModel()
+            {
+                Id = model.Id,
+                Image = uniqueFileName
+            };
+
+            var editResult = await _newsService.EditImageAsync(editNewsModel);
+            
+            // Eski resmi silme
+            if (!string.IsNullOrEmpty(editResult.OldImageName))
+            {
+                var oldImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "News",
+                    editResult.OldImageName);
+                if (System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete(oldImagePath);
+                }
+            }
+
+            Thread.Sleep(2000); // TODO: delete
+
+            return Ok(new { message = "Haber & Duyuru görseli güncellendi", newImage =  uniqueFileName});
+        }
+        catch (Exception ex)
+        {
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+            }
+
+            return ex switch
+            {
+                BadRequestException => BadRequest(new { message = "Haber görseli güncellenirken bir hata oluştu: " + ex.Message }),
+                NotFoundException => NotFound(new { message = "İlgili haber bulunamadı: " + ex.Message }),
+                _ => StatusCode(500, new { message = "Beklenmeyen bir hata oluştu: " + ex.Message })
+            };
         }
     }
 }

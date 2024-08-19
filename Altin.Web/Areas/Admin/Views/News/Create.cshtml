@@ -47,6 +47,17 @@
 {
     <script>
         $(document).ready(function () {
+            $('#customFile').change(function ()
+            {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#newsImage').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        
             $('#newsCreateForm').submit(function (e) {
                 e.preventDefault();
 
@@ -77,10 +88,12 @@
                         
                         $("#message").html('<div class="alert alert-success">' + response.message + '</div>');
                         $("#newsCreateForm")[0].reset();
+                        $("#newsImage").attr('src', "/admin/assets/img/no-image.jpg");
                     },
                     error: function (data){
                         submitButton.prop('disabled', false);
                         submitButton.html('Oluştur');
+                        $("#newsImage").attr('src', "/admin/assets/img/no-image.jpg");
                         
                         if (data.status === 400) {
                             var response = JSON.parse(data.responseText);

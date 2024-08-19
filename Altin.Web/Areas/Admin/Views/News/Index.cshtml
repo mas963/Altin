@@ -1,0 +1,80 @@
+﻿@model List<Altin.Application.Models.News.GetNewsModel>
+@{
+    ViewBag.NavbarTitle = "Haber & Duyurular";
+    Layout = "_AdminLayout";
+}
+
+<div class="panel-header panel-header-sm">
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Haber & Duyurular</h5>
+                </div>
+                <div class="card-body">
+                    <a href="/Admin/News/Create">
+                        <button type="button" class="btn btn-info">Yeni Ekle</button>
+                    </a>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-primary">
+                            <tr>
+                                <th>
+                                    Görsel
+                                </th>
+                                <th>
+                                    Başlık
+                                </th>
+                                <th>
+                                    Yayınlama Tarihi
+                                </th>
+                                <th class="text-right">
+                                    İşlemler
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var news in Model)
+                            {
+                                <tr id="product-row-@news.Id">
+                                    <td>
+                                        @if (news.ImageName != null)
+                                        {
+                                            <img class="img-thumbnail" width="100" src="~/img/News/@news.ImageName"/>
+                                        }
+                                        else
+                                        {
+                                            <img class="img-thumbnail" width="100" src="~/admin/assets/img/no-image.jpg"/>
+                                        }
+                                    </td>
+                                    <td>
+                                        @news.Title
+                                    </td>
+                                    <td>
+                                        @news.CreatedOn.ToString("dd/MM/yyyy - HH:mm")
+                                    </td>
+                                    <td class="text-right">
+                                        <button type="button" rel="tooltip" class="btn btn-info btn-sm btn-icon">
+                                            <i class="now-ui-icons education_glasses"></i>
+                                        </button>
+                                        <a href="/Admin/News/Edit/?id=@news.Id">
+                                            <button type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
+                                                <i class="now-ui-icons ui-2_settings-90"></i>
+                                            </button>
+                                        </a>
+                                        <button type="button" rel="tooltip" class="btn btn-danger btn-sm btn-icon" onclick="deleteNews('@news.Id')">
+                                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

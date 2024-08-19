@@ -46,7 +46,7 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
     }
 
     public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null,
-        Expression<Func<TEntity, object>> orderBy = null)
+        Expression<Func<TEntity, object>> orderBy = null, bool descending = false)
     {
         IQueryable<TEntity> query = _context.Set<TEntity>();
 
@@ -57,8 +57,9 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
 
         if (orderBy != null)
         {
-            query = query.OrderBy(orderBy);
+            query = descending ? query.OrderByDescending(orderBy) : query.OrderBy(orderBy);
         }
+
 
         List<TEntity> result = await query.ToListAsync();
 

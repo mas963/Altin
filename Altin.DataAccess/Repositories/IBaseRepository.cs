@@ -10,7 +10,7 @@ public interface IBaseRepository<TEntity>
         Func<IQueryable<TEntity>, IQueryable<TEntity>> include = null);
 
     Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null,
-        Expression<Func<TEntity, object>> orderBy = null);
+        Expression<Func<TEntity, object>> orderBy = null, bool descending = false);
 
     Task<TEntity> AddAsync(TEntity entity);
 

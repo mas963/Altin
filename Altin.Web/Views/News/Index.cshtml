@@ -1,18 +1,14 @@
-﻿@{
+﻿@model List<Altin.Application.Models.News.GetNewsModel>
+
+@{
     ViewBag.Title = "Haberler & Duyurular";
     Layout = "_Layout";
 }
 
-<!-- Single Page Header start -->
-<div class="container-fluid page-header py-5">
-    <h1 class="text-center text-white display-6">Haberler & Duyurular</h1>
-</div>
-<!-- Single Page Header End -->
-
+<div class="container-fluid py-5"></div>
 <!-- News Start -->
 <div class="container-fluid testimonial bg-secondary pb-5">
     <div class="container">
-
         <div class="container-fluid banner">
             <div class="container py-5">
                 <div class="row g-4 align-items-center">
@@ -27,30 +23,26 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="card mb-3">
-                            <img class="card-img-top" src="~/img/news.jpg" alt="Card image cap" id="newsimg" >
-                            <div class="card-body">
-                                <h5 class="card-title">Üresinler Kuyumculuk</h5>
-                                <p class="card-text">Mağazamıza gelip ya da online olarak ürünlerimizi inceleyebilirsiniz</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+                    @foreach (var news in Model)
+                    {
+                        <div class="col-md-6 mb-3">
+                            <div class="card mb-3 h-100">
+                                <a href="/Haberler/Detay/@news.Slug"><img class="card-img-top newsBannerImg" src="~/img/News/@news.ImageName"></a>
+                                <div class="card-body">
+                                    <a href="/Haberler/Detay/@news.Slug"><h5 class="card-title">@news.Title</h5></a>
+                                    <p class="card-text">@(news.Content.Length <= 200 ? news.Content : news.Content.Substring(0, 200)) ...</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">@news.CreatedOn.ToString("dd/MM/yyyy - HH:mm")</small>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card mb-3">
-                            <img class="card-img-top" src="~/img/news.jpg" alt="Card image cap" id="newsimg" >
-                            <div class="card-body">
-                                <h5 class="card-title">Üresinler Kuyumculuk</h5>
-                                <p class="card-text">Mağazamıza gelip ya da online olarak ürünlerimizi inceleyebilirsiniz</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
+                    }
+                    
                 </div>
             </div>
         </div>
-        
     </div>
 </div>
 <!-- News End -->
