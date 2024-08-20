@@ -500,7 +500,7 @@
 }
 
 .pagination a:hover:not(.active) {
-    background-color: var(--bs-primary)
+    background-color: #dbbf49 !important;
 }
 
 .nav.nav-tabs .nav-link.active {
@@ -540,4 +540,8 @@ h1 {
 
 .gonder {
     color: #dbbf49 !important;
+}
+
+a:hover {
+    background-color: #dbbf49 !important;
 }
