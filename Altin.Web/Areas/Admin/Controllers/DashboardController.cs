@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Altin.Areas.Admin.Controllers;
+namespace Altin.Web.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize]
 public class DashboardController : Controller
 {
     // GET

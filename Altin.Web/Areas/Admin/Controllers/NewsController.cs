@@ -2,11 +2,13 @@
 using Altin.Application.Models.News;
 using Altin.Application.Services;
 using Altin.Web.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Altin.Web.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize]
 public class NewsController : Controller
 {
     private readonly IWebHostEnvironment _webHostEnvironment;

@@ -59,26 +59,12 @@ public class UserService : IUserService
         };
     }
 
-    public async Task<LoginResponseModel> LoginAsync(LoginUserModel loginUserModel)
+    public async Task<SignInResult> LoginAsync(LoginUserModel loginUserModel)
     {
-        var user = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == loginUserModel.Username);
+        var result = await _signInManager.PasswordSignInAsync(loginUserModel.Username, loginUserModel.Password,
+            loginUserModel.RememberMe, lockoutOnFailure: false);
 
-        if (user == null)
-            throw new NotFoundException("Username or password is incorrect");
-
-        var signInResult = await _signInManager.PasswordSignInAsync(user, loginUserModel.Password, false, false);
-
-        if (!signInResult.Succeeded)
-            throw new NotFoundException("Username or password is incorrect");
-
-        var token = JwtHelper.GenerateToken(user, _configuration);
-
-        return new LoginResponseModel
-        {
-            Username = user.UserName,
-            Email = user.Email,
-            Token = token
-        };
+        return result;
     }
 
     public async Task<ConfirmEmailResponseModel> ConfirmEmailAsync(ConfirmEmailModel confirmEmailModel)
@@ -112,7 +98,12 @@ public class UserService : IUserService
 
         if (!result.Succeeded)
             throw new BadRequestException(result.Errors.FirstOrDefault()?.Description);
-        
+
         return Guid.Parse(user.Id);
+    }
+    
+    public async Task LogoutAsync()
+    {
+        await _signInManager.SignOutAsync();
     }
 }

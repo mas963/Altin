@@ -1,11 +1,13 @@
 ﻿using Altin.Application.Exceptions;
 using Altin.Application.Models.Category;
 using Altin.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Altin.Web.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize]
 public class CategoryController : Controller
 {
     private readonly ICategoryService _categoryService;

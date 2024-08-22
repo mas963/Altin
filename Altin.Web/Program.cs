@@ -1,5 +1,6 @@
 using Altin.Application;
 using Altin.DataAccess;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,22 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.DataAccessDependencyInjection(builder.Configuration);
 builder.Services.ApplicationDependencyInjection(builder.Configuration);
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(120);
+    options.Cookie.HttpOnly = true; 
+    options.LoginPath = "/Admin/Auth/Login";
+    options.LogoutPath = "/Admin/Auth/Logout";
+    options.SlidingExpiration = true;
+});
+
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -24,6 +41,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

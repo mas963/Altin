@@ -1,4 +1,5 @@
 ﻿using Altin.Application.Models.User;
+using Microsoft.AspNetCore.Identity;
 
 namespace Altin.Application.Services;
 
@@ -9,6 +10,8 @@ public interface IUserService
     Task<ConfirmEmailResponseModel> ConfirmEmailAsync(ConfirmEmailModel confirmEmailModel);
 
     Task<CreateUserResponseModel> CreateAsync(CreateUserModel createUserModel);
-    
-    Task<LoginResponseModel> LoginAsync(LoginUserModel loginUserModel);
+
+    Task<SignInResult> LoginAsync(LoginUserModel loginUserModel);
+
+    Task LogoutAsync();
 }
