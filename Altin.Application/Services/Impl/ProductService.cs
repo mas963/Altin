@@ -2,7 +2,7 @@
 using Altin.Application.Models.Product;
 using Altin.Core.Entities;
 using Altin.DataAccess.Repositories;
-using Altin.Web.Areas.Admin.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Altin.Application.Services.Impl;
 
@@ -32,6 +32,30 @@ public class ProductService : IProductService
             Name = product.Name,
             Description = product.Description,
             ImageUrl = product.ImageUrl
+        };
+    }
+
+    public async Task<GetProductDetailModel> GetBySlugAsync(string slug)
+    {
+        var product = await _productRepository.GetAsync(x => x.Slug == slug,
+            include: x => x.Include(x => x.CategoryProducts).ThenInclude(x => x.Category));
+
+        if (product == null)
+        {
+            throw new NotFoundException("Product not found");
+        }
+
+        return new GetProductDetailModel
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Description = product.Description,
+            ImageUrl = product.ImageUrl,
+            HepsiBuradaUrl = product.HepsiburadaUrl,
+            TrendyolUrl = product.TrendyolUrl,
+            Price = product.Price,
+            IsPopular = product.IsPopular,
+            Categories = product.CategoryProducts.Select(x => x.Category.Name).ToList()
         };
     }
 
@@ -90,7 +114,7 @@ public class ProductService : IProductService
                 Description = x.Description,
                 ImageUrl = x.ImageUrl
             }).ToList(),
-            
+
             CategoryName = category.Name,
             CategoryNormalizeName = category.NormalizeName,
             CurrentPage = page,
@@ -107,6 +131,9 @@ public class ProductService : IProductService
             Name = model.ProductName,
             Description = model.ProductDescription,
             ImageUrl = model.ProductImageName,
+            HepsiburadaUrl = model.HepsiburadaUrl,
+            TrendyolUrl = model.TrendyolUrl,
+            Price = model.Price,
             IsPopular = model.IsPopularProduct,
         };
 
@@ -122,9 +149,12 @@ public class ProductService : IProductService
 
         await _productRepository.AddAsync(product);
 
-        foreach (var categoryId in model.CategoryIds)
+        if (model.CategoryIds != null)
         {
-            await _categoryRepository.AddCategoryToProductAsync(categoryId, product.Id);
+            foreach (var categoryId in model.CategoryIds)
+            {
+                await _categoryRepository.AddCategoryToProductAsync(categoryId, product.Id);
+            }
         }
     }
 

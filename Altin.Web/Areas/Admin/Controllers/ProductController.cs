@@ -2,6 +2,7 @@
 using Altin.Application.Models.Product;
 using Altin.Application.Services;
 using Altin.Web.Areas.Admin.Models;
+using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,19 +34,23 @@ public class ProductController : Controller
     public async Task<IActionResult> Add()
     {
         var categories = await _categoryService.GetAllAsync();
-        
+
         ViewData["Categories"] = categories;
-        
+
         return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Upload([FromForm] ProductUploadViewModel model)
+    public async Task<IActionResult> Upload([FromForm] ProductUploadViewModel model,
+        [FromServices] IValidator<ProductUploadViewModel> validator)
     {
-        if (model.ProductImage == null)
+        var validationResult = validator.Validate(model);
+
+        if (!validationResult.IsValid)
         {
-            return Json(new { success = false, message = "Lütfen bir dosya seçin." });
+            var errors = validationResult.Errors.Select(e => e.ErrorMessage);
+            return BadRequest(new { message = errors });
         }
 
         var permittedExtensions = new[] { ".jpg", ".jpeg", ".png" };
@@ -53,7 +58,7 @@ public class ProductController : Controller
 
         if (!permittedExtensions.Contains(extension))
         {
-            return Json(new { success = false, message = "Sadece .jpg, .jpeg, .png uzantılı dosyalar yüklenebilir." });
+            return BadRequest(new { message = "Sadece .jpg, .jpeg, .png uzantılı dosyalar yüklenebilir." });
         }
 
         var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "img/Products");
@@ -77,6 +82,9 @@ public class ProductController : Controller
                 ProductName = model.ProductName,
                 ProductDescription = model.ProductDescription,
                 ProductImageName = uniqueFileName,
+                HepsiburadaUrl = model.HepsiburadaUrl,
+                TrendyolUrl = model.TrendyolUrl,
+                Price = model.Price,
                 IsPopularProduct = model.IsPopularProduct,
                 CategoryIds = model.CategoryIds
             };
@@ -85,7 +93,7 @@ public class ProductController : Controller
 
             Thread.Sleep(2000); // TODO: delete
 
-            return Json(new { success = true, message = "Ürün başarıyla eklendi" });
+            return Ok(new { message = "Ürün başarıyla eklendi" });
         }
         catch (BadRequestException ex)
         {
@@ -95,14 +103,14 @@ public class ProductController : Controller
                 System.IO.File.Delete(filePath);
             }
 
-            return Json(new { success = false, message = "Ürün eklenirken bir hata oluştu: " + ex.Message });
+            return BadRequest(new { message = "Ürün eklenirken bir hata oluştu: " + ex.Message });
         }
     }
 
     public async Task<IActionResult> Update(Guid id)
     {
         var product = await _productService.GetAsync(id);
-        
+
         if (product == null)
         {
             return NotFound();
@@ -117,23 +125,32 @@ public class ProductController : Controller
         };
 
         ViewData["CategoriesToProduct"] = await _categoryService.GetAllWithSelectedAsync(id);
-        
+
         return View(model);
     }
 
     [HttpPut]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Update([FromForm] ProductUpdateReq model)
+    public async Task<IActionResult> Update([FromForm] ProductUpdateReq model,
+        [FromServices] IValidator<ProductUpdateReq> validator)
     {
+        var validationResult = validator.Validate(model);
+
+        if (!validationResult.IsValid)
+        {
+            var errors = validationResult.Errors.Select(e => e.ErrorMessage);
+            return BadRequest(new { message = errors });
+        }
+        
         try
         {
             await _productService.UpdateAsync(model);
 
-            return Json(new { success = true });
+            return Ok();
         }
         catch (NotFoundException ex)
         {
-            return Json(new { success = false, message = ex.Message });
+            return NotFound(new { message = ex.Message });
         }
     }
 

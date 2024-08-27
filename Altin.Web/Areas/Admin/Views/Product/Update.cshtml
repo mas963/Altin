@@ -4,7 +4,7 @@
 @{
     Layout = "_AdminLayout";
     ViewBag.NavbarTitle = "Ürün Düzenle";
-    
+
     var categories = ViewData["CategoriesToProduct"] as List<GetCategoryWithSelectedModel>;
 }
 
@@ -26,8 +26,8 @@
                             <input type="text" class="form-control" id="inputProductName" value="@Model.ProductName">
                         </div>
                         <div class="form-group">
-                            <label for="inputProductDescription">Ürün Açıklaması</label>
-                            <input type="text" class="form-control" id="inputProductDescription" value="@Model.ProductDescription">
+                            <label for="textAreaProductDescription">Ürün Açıklaması</label>
+                            <textarea class="form-control" id="textAreaProductDescription" rows="5" placeholder="Ürün açıklamasını giriniz">@Model.ProductDescription</textarea>
                         </div>
 
                         <hr/>
@@ -87,7 +87,7 @@
                 var formData = new FormData();
                 formData.append("Id", "@Model.Id");
                 formData.append("ProductName", $("#inputProductName").val());
-                formData.append("ProductDescription", $("#inputProductDescription").val());
+                formData.append("ProductDescription", $("#textAreaProductDescription").val());
 
                 var selectedCategories = $("#multipleSelectCategory").val();
                 $.each(selectedCategories, function(index, value) {
@@ -110,18 +110,18 @@
                     success: function (response) {
                         $submitButton.prop('disabled', false);
                         $submitButton.html('Ürünü Düzenle');
-                        
-                        if (response.success) {
-                            $("#message").html('<div class="alert alert-success">Ürün başarıyla güncellendi</div>');
-                        } else {
-                            $("#message").html('<div class="alert alert-danger">Ürün güncellenirken bir hata oluştu</div>');
-                        }
+                        $("#message").html('<div class="alert alert-success">Ürün başarıyla güncellendi</div>');
                     },
-                    error: function () {
+                    error: function (data) {
                         $submitButton.prop('disabled', false);
                         $submitButton.html('Ürünü Düzenle');
-                        
-                        $("#message").html('<div class="alert alert-danger">Beklenmeyen bir hata oluştu.</div>');
+
+                        if (data.status === 400) {
+                            var response = JSON.parse(data.responseText);
+                            $("#message").html('<div class="alert alert-danger">' + response.message + '</div>');
+                        } else {
+                            $("#message").html('<div class="alert alert-danger">Beklenmeyen bir hata oluştu</div>');
+                        }
                     }
                 });
             });

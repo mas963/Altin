@@ -1,29 +1,29 @@
 using Altin.Application;
 using Altin.DataAccess;
+using Altin.Web.Areas.Admin.Models;
+using Altin.Web.Areas.Admin.Models.Validators;
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IValidator<ProductUploadViewModel>, ProductUploadViewModelValidator>();
 
 builder.Services.DataAccessDependencyInjection(builder.Configuration);
 builder.Services.ApplicationDependencyInjection(builder.Configuration);
-
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie();
-
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.ExpireTimeSpan = TimeSpan.FromMinutes(120);
-    options.Cookie.HttpOnly = true; 
+    options.Cookie.HttpOnly = true;
     options.LoginPath = "/Admin/Auth/Login";
     options.LogoutPath = "/Admin/Auth/Logout";
     options.SlidingExpiration = true;
 });
-
 builder.Services.AddHttpContextAccessor();
-
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
@@ -45,8 +45,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name : "areas",
-    pattern : "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
 );
 
 app.MapControllerRoute(

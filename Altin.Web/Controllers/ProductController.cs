@@ -41,4 +41,21 @@ public class ProductController : Controller
 
         return View(result);
     }
+
+    [Route("{slug}")]
+    public async Task<IActionResult> ProductDetail(string slug)
+    {
+        try 
+        {
+            var result = await _productService.GetBySlugAsync(slug);
+            
+            ViewData["Categories"] = await _categoryService.GetAllAsync();
+
+            return View(result);
+        }
+        catch (NotFoundException)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+    }
 }

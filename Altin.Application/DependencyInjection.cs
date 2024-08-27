@@ -1,8 +1,11 @@
 ﻿using Altin.Application.Common.Email;
 using Altin.Application.MappingProfiles;
+using Altin.Application.Models.Product;
+using Altin.Application.Models.Validators.Product;
 using Altin.Application.Services;
 using Altin.Application.Services.Impl;
 using Altin.Shared;
+using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,7 +25,11 @@ public static class DependencyInjection
         services.AddScoped<IProductService, ProductService>();
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<INewsService, NewsService>();
+        
+        // FluentValidation
+        services.AddScoped<IValidator<ProductUpdateReq>, ProductUpdateReqValidator>();
 
+        
         services.AddAutoMapper(typeof(IMappingProfilesMarker));
 
         services.AddSingleton(configuration.GetSection("SmtpSettings").Get<SmtpSettings>());

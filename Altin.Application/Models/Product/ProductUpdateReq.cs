@@ -1,4 +1,4 @@
-﻿namespace Altin.Web.Areas.Admin.Models;
+﻿namespace Altin.Application.Models.Product;
 
 public class ProductUpdateReq
 {

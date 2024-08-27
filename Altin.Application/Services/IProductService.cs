@@ -1,5 +1,4 @@
 ﻿using Altin.Application.Models.Product;
-using Altin.Web.Areas.Admin.Models;
 
 namespace Altin.Application.Services;
 
@@ -7,6 +6,8 @@ public interface IProductService
 {
     Task<GetProductModel> GetAsync(Guid id);
 
+    Task<GetProductDetailModel> GetBySlugAsync(string slug);
+    
     Task<List<GetProductModel>> GetPopularProductsAsync();
 
     Task<GetProductWithPagination> GetAllAsync(int page = 1, int pageSize = 9);
