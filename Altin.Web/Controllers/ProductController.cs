@@ -50,6 +50,7 @@ public class ProductController : Controller
             var result = await _productService.GetBySlugAsync(slug);
             
             ViewData["Categories"] = await _categoryService.GetAllAsync();
+            ViewData["SimilarProducts"] = await _productService.GetSimilarProductsAsync(result.Id);
 
             return View(result);
         }

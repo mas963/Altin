@@ -80,7 +80,7 @@
 
   
     $(".vegetable-carousel").owlCarousel({
-        autoplay: true,
+        autoplay: false,
         smartSpeed: 1500,
         center: false,
         dots: true,

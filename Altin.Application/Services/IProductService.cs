@@ -22,4 +22,6 @@ public interface IProductService
     Task<ProductImageUpdateReturnModel> UpdateImageAsync(Guid id, string imageUrl);
 
     Task<ProductDeleteReturnModel> DeleteAsync(Guid id);
+
+    Task<List<GetProductModel>> GetSimilarProductsAsync(Guid productId);
 }

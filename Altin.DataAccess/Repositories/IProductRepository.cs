@@ -10,4 +10,6 @@ public interface IProductRepository : IBaseRepository<Product>
         int size);
 
     Task<int> CountByCategoryAsync(string categoryNormalizeName);
+
+    Task<List<Product>> GetSimilarProductsAsync(Guid productId);
 }

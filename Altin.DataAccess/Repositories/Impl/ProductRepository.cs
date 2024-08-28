@@ -55,4 +55,32 @@ public class ProductRepository : BaseRepository<Product>, IProductRepository
 
         return productCount;
     }
+
+    public async Task<List<Product>> GetSimilarProductsAsync(Guid productId)
+    {
+        var productCategories = await _context.Products
+            .Where(p => p.Id == productId)
+            .Include(p => p.CategoryProducts) // Ürünün CategoryProducts tablosu ile olan ilişkisini dahil et
+            .ThenInclude(cp => cp.Category) // CategoryProducts üzerinden Category'leri dahil et
+            .SelectMany(p => p.CategoryProducts.Select(cp => cp.Category)) // Kategorileri seç
+            .ToListAsync();
+
+        // Benzer ürünleri filtrele ve eşleşen kategori sayısına göre sırala
+        var similarProducts = await _context.Products
+            .Where(p => p.Id != productId) // Aynı ürünü dahil etme
+            .Select(p => new
+            {
+                Product = p,
+                MatchCount =
+                    p.CategoryProducts.Count(cp =>
+                        productCategories.Contains(cp.Category)) // Eşleşen kategori sayısını hesapla
+            })
+            .Where(p => p.MatchCount > 0) // Eşleşmesi olanları al
+            .OrderByDescending(p => p.MatchCount) // Eşleşme sayısına göre sırala (çoktan aza)
+            .Select(p => p.Product) // Sadece ürünü al
+            .Take(8) // En fazla 8 ürün getir
+            .ToListAsync();
+
+        return similarProducts;
+    }
 }

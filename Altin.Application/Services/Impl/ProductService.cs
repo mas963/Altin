@@ -31,6 +31,7 @@ public class ProductService : IProductService
             Id = product.Id,
             Name = product.Name,
             Description = product.Description,
+            Slug = product.Slug,
             ImageUrl = product.ImageUrl
         };
     }
@@ -67,6 +68,7 @@ public class ProductService : IProductService
         {
             Id = x.Id,
             Name = x.Name,
+            Slug = x.Slug,
             Description = x.Description,
             ImageUrl = x.ImageUrl
         }).ToList();
@@ -84,6 +86,7 @@ public class ProductService : IProductService
                 Id = x.Id,
                 Name = x.Name,
                 Description = x.Description,
+                Slug = x.Slug,
                 ImageUrl = x.ImageUrl
             }).ToList(),
             CurrentPage = page,
@@ -111,6 +114,7 @@ public class ProductService : IProductService
             {
                 Id = x.Id,
                 Name = x.Name,
+                Slug = x.Slug,
                 Description = x.Description,
                 ImageUrl = x.ImageUrl
             }).ToList(),
@@ -215,5 +219,19 @@ public class ProductService : IProductService
         {
             ProductImage = product.ImageUrl
         };
+    }
+
+    public async Task<List<GetProductModel>> GetSimilarProductsAsync(Guid productId)
+    {
+        var products = await _productRepository.GetSimilarProductsAsync(productId);
+        
+        return products.Select(x => new GetProductModel
+        {
+            Id = x.Id,
+            Name = x.Name,
+            Description = x.Description,
+            Slug = x.Slug,
+            ImageUrl = x.ImageUrl
+        }).ToList();
     }
 }
