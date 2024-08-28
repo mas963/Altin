@@ -109,24 +109,16 @@ public class ProductController : Controller
 
     public async Task<IActionResult> Update(Guid id)
     {
-        var product = await _productService.GetAsync(id);
-
-        if (product == null)
+        try
+        {
+            var product = await _productService.GetUpdateDetailAsync(id);
+            ViewData["CategoriesToProduct"] = await _categoryService.GetAllWithSelectedAsync(id);
+            return View(product);
+        }
+        catch (NotFoundException ex)
         {
             return NotFound();
         }
-
-        var model = new ProductUpdateModel
-        {
-            Id = product.Id,
-            ProductName = product.Name,
-            ProductDescription = product.Description,
-            ProductImageUrl = product.ImageUrl
-        };
-
-        ViewData["CategoriesToProduct"] = await _categoryService.GetAllWithSelectedAsync(id);
-
-        return View(model);
     }
 
     [HttpPut]
@@ -141,7 +133,7 @@ public class ProductController : Controller
             var errors = validationResult.Errors.Select(e => e.ErrorMessage);
             return BadRequest(new { message = errors });
         }
-        
+
         try
         {
             await _productService.UpdateAsync(model);

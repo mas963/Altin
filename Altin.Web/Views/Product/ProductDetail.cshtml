@@ -101,10 +101,10 @@
                 {
                     <div class="border border-primary rounded position-relative vesitable-item">
                         <div class="vesitable-img">
-                            <img src="~/img/Products/@similarProduct.ImageUrl" class="img-fluid w-100 rounded-top" style="height: 300px; object-fit: cover;" alt="">
+                            <a href="/Urunler/@similarProduct.Slug"><img src="~/img/Products/@similarProduct.ImageUrl" class="img-fluid w-100 rounded-top" style="height: 300px; object-fit: cover;" alt=""></a>
                         </div>
                         <div class="p-4 rounded-bottom">
-                            <h5>@similarProduct.Name</h5>
+                            <a href="/Urunler/@similarProduct.Slug"><h5>@similarProduct.Name</h5></a>
                         </div>
                     </div>
                 }

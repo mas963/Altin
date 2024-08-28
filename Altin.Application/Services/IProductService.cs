@@ -7,7 +7,7 @@ public interface IProductService
     Task<GetProductModel> GetAsync(Guid id);
 
     Task<GetProductDetailModel> GetBySlugAsync(string slug);
-    
+
     Task<List<GetProductModel>> GetPopularProductsAsync();
 
     Task<GetProductWithPagination> GetAllAsync(int page = 1, int pageSize = 9);
@@ -24,4 +24,6 @@ public interface IProductService
     Task<ProductDeleteReturnModel> DeleteAsync(Guid id);
 
     Task<List<GetProductModel>> GetSimilarProductsAsync(Guid productId);
+    
+    Task<ProductUpdateModel> GetUpdateDetailAsync(Guid id);
 }

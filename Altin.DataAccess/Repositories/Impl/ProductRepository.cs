@@ -12,6 +12,7 @@ public class ProductRepository : BaseRepository<Product>, IProductRepository
     public async Task<List<Product>> GetAllWithPaginationAsync(int page, int size)
     {
         return await _context.Products
+            .OrderByDescending(x => x.CreatedOn)
             .Skip((page - 1) * size)
             .Take(size)
             .ToListAsync();
@@ -31,6 +32,7 @@ public class ProductRepository : BaseRepository<Product>, IProductRepository
         var products = await _context.CategoryProducts
             .Where(x => x.CategoryId == category.Id)
             .Include(x => x.Product)
+            .OrderByDescending(x => x.Product.CreatedOn)
             .Select(x => x.Product)
             .Skip((page - 1) * size)
             .Take(size)

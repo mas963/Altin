@@ -36,6 +36,27 @@ public class ProductService : IProductService
         };
     }
 
+    public async Task<ProductUpdateModel> GetUpdateDetailAsync(Guid id)
+    {
+        var product = await _productRepository.GetAsync(x => x.Id == id);
+
+        if (product == null)
+        {
+            throw new NotFoundException("Product not found");
+        }
+        
+        return new ProductUpdateModel
+        {
+            Id = product.Id,
+            ProductName = product.Name,
+            ProductDescription = product.Description,
+            ProductImageUrl = product.ImageUrl,
+            HepsiburadaUrl = product.HepsiburadaUrl,
+            TrendyolUrl = product.TrendyolUrl,
+            Price = product.Price,
+        };
+    }
+
     public async Task<GetProductDetailModel> GetBySlugAsync(string slug)
     {
         var product = await _productRepository.GetAsync(x => x.Slug == slug,
@@ -173,6 +194,9 @@ public class ProductService : IProductService
 
         product.Name = model.ProductName;
         product.Description = model.ProductDescription;
+        product.HepsiburadaUrl = model.HepsiburadaUrl;
+        product.TrendyolUrl = model.TrendyolUrl;
+        product.Price = model.Price;
 
         await _productRepository.UpdateAsync(product);
 
