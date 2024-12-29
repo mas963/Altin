@@ -25,6 +25,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddRazorPages();
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 

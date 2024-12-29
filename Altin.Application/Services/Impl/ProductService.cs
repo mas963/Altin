@@ -3,6 +3,7 @@ using Altin.Application.Models.Product;
 using Altin.Core.Entities;
 using Altin.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Altin.Application.Services.Impl;
 
@@ -10,11 +11,14 @@ public class ProductService : IProductService
 {
     private readonly IProductRepository _productRepository;
     private readonly ICategoryRepository _categoryRepository;
-
-    public ProductService(IProductRepository productRepository, ICategoryRepository categoryRepository)
+    private readonly IMemoryCache _memoryCache;
+    
+    public ProductService(IProductRepository productRepository, ICategoryRepository categoryRepository,
+        IMemoryCache memoryCache)
     {
         _productRepository = productRepository;
         _categoryRepository = categoryRepository;
+        _memoryCache = memoryCache;
     }
 
     public async Task<GetProductModel> GetAsync(Guid id)
@@ -44,7 +48,7 @@ public class ProductService : IProductService
         {
             throw new NotFoundException("Product not found");
         }
-        
+
         return new ProductUpdateModel
         {
             Id = product.Id,
@@ -83,16 +87,28 @@ public class ProductService : IProductService
 
     public async Task<List<GetProductModel>> GetPopularProductsAsync()
     {
-        var products = await _productRepository.GetAllAsync(x => x.IsPopular);
-
-        return products.Select(x => new GetProductModel
+        var cacheKey = "popular_products";
+        
+        if (!_memoryCache.TryGetValue(cacheKey, out List<GetProductModel> productList))
         {
-            Id = x.Id,
-            Name = x.Name,
-            Slug = x.Slug,
-            Description = x.Description,
-            ImageUrl = x.ImageUrl
-        }).ToList();
+            var products = await _productRepository.GetAllAsync(x => x.IsPopular);
+
+            productList = products.Select(x => new GetProductModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Description = x.Description,
+                Slug = x.Slug,
+                ImageUrl = x.ImageUrl
+            }).ToList();
+            
+            var cacheOptions = new MemoryCacheEntryOptions()
+                .SetAbsoluteExpiration(TimeSpan.FromHours(5)); // Absolute expiration
+
+            _memoryCache.Set(cacheKey, productList, cacheOptions);
+        }
+        
+        return productList;
     }
 
     public async Task<GetProductWithPagination> GetAllAsync(int page = 1, int size = 9)
@@ -170,6 +186,8 @@ public class ProductService : IProductService
             {
                 throw new BadRequestException("En fazla 8 adet popüler ürün ekleyebilirsiniz");
             }
+            
+            _memoryCache.Remove("popular_products");
         }
 
         await _productRepository.AddAsync(product);
@@ -221,6 +239,9 @@ public class ProductService : IProductService
         product.ImageUrl = imageUrl;
 
         await _productRepository.UpdateAsync(product);
+        
+        if (product.IsPopular)
+            _memoryCache.Remove("popular_products");
 
         return new ProductImageUpdateReturnModel
         {
@@ -238,6 +259,9 @@ public class ProductService : IProductService
         }
 
         await _productRepository.DeleteAsync(product);
+        
+        if (product.IsPopular)
+            _memoryCache.Remove("popular_products");
 
         return new ProductDeleteReturnModel
         {
@@ -248,7 +272,7 @@ public class ProductService : IProductService
     public async Task<List<GetProductModel>> GetSimilarProductsAsync(Guid productId)
     {
         var products = await _productRepository.GetSimilarProductsAsync(productId);
-        
+
         return products.Select(x => new GetProductModel
         {
             Id = x.Id,
